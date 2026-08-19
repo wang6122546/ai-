@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>安全作业管理平台｜产品需求文档</title>
+  <style>
+    :root{--ink:#18232b;--muted:#65747e;--line:#dbe4e7;--paper:#fff;--bg:#f3f6f5;--brand:#087f6a;--brand2:#075e54;--soft:#e8f5f1;--warn:#ee8a22;--danger:#c94b42;--blue:#3178a9;--shadow:0 12px 36px rgba(22,50,45,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}button,input{font:inherit}a{color:inherit;text-decoration:none}
+    .rail{position:fixed;inset:0 auto 0 0;width:276px;background:#102d2b;color:#d9e7e4;padding:28px 20px;overflow:auto;z-index:4}.brand{display:flex;gap:12px;align-items:center;padding:0 8px 24px;border-bottom:1px solid #2d4946}.brand-mark{width:40px;height:40px;display:grid;place-items:center;background:#1aa889;border-radius:11px;color:white;font-size:20px;font-weight:800}.brand b{display:block;font-size:16px;color:#fff}.brand small{color:#91aaa5}.nav-title{margin:24px 10px 8px;color:#77918c;font-size:11px;letter-spacing:.14em}.rail a{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:8px;color:#b8ccc8}.rail a:hover,.rail a.active{background:#1c4540;color:#fff}.rail .num{width:22px;color:#5f8e86;font-size:11px}.rail-foot{margin-top:28px;padding:15px;border:1px solid #31504c;border-radius:10px;color:#9fb4b0;font-size:12px}.rail-close{display:none;position:absolute;right:14px;top:12px;border:0;background:transparent;color:#b8ccc8;font-size:24px;cursor:pointer}
+    .top{position:sticky;top:0;margin-left:276px;height:66px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 42px;z-index:3}.crumb{color:var(--muted)}.crumb b{color:var(--ink)}.actions{display:flex;gap:9px}.btn{border:1px solid var(--line);background:white;border-radius:8px;padding:8px 13px;cursor:pointer;color:#38484f}.btn:hover{border-color:var(--brand);color:var(--brand)}.btn.primary{background:var(--brand);color:white;border-color:var(--brand)}
+    main{margin-left:276px;padding:34px 42px 80px;max-width:1480px}.hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#083f3b,#0b7163);color:#fff;border-radius:18px;padding:48px 50px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:380px;height:380px;right:-90px;top:-200px;border:70px solid rgba(255,255,255,.06);border-radius:50%}.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8ee0cc}.hero h1{font-size:34px;line-height:1.25;margin:12px 0}.hero p{max-width:740px;color:#c4ddd7;font-size:15px;margin:0}.meta{display:flex;gap:28px;margin-top:28px;color:#c4ddd7}.meta b{color:white}.status{display:inline-flex;align-items:center;gap:7px;background:rgba(151,231,210,.16);padding:5px 10px;border-radius:999px;color:#a9ead9}.status:before{content:"";width:7px;height:7px;border-radius:50%;background:#69d5b9}
+    .prototype-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 14px}.prototype-card{position:relative;display:flex;align-items:center;gap:18px;min-height:126px;padding:22px 24px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 12px rgba(30,60,55,.03);transition:.2s ease}.prototype-card:hover{transform:translateY(-2px);border-color:#75b8aa;box-shadow:var(--shadow)}.prototype-icon{flex:0 0 52px;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:var(--soft);color:var(--brand);font-size:24px;font-weight:800}.prototype-card.mobile .prototype-icon{background:#eaf2f8;color:var(--blue)}.prototype-card h2{font-size:17px;margin:0 0 3px}.prototype-card p{color:var(--muted);margin:0;font-size:13px}.prototype-card .live{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:var(--brand);font-size:12px;font-weight:700}.prototype-card .live:before{content:"";width:7px;height:7px;border-radius:50%;background:#24b58e;box-shadow:0 0 0 4px #e5f6f1}.prototype-card .arrow{position:absolute;right:22px;top:22px;color:#8aa09c;font-size:20px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 36px}.metric{display:block;background:var(--paper);padding:20px;border:1px solid var(--line);border-radius:12px;transition:.2s ease}.metric:hover{border-color:#75b8aa;transform:translateY(-1px)}.metric small{display:block;color:var(--muted)}.metric b{font-size:26px;color:var(--brand2)}
+    .section{scroll-margin-top:88px;background:var(--paper);border:1px solid var(--line);border-radius:14px;margin:0 0 18px;padding:30px 34px;box-shadow:0 3px 12px rgba(30,60,55,.03)}.section-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}.chapter{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:var(--soft);color:var(--brand);font-weight:800}.section h2{font-size:22px;margin:0}.section h3{font-size:16px;margin:26px 0 10px}.lead{margin:2px 0 0;color:var(--muted)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:18px;border:1px solid var(--line);border-radius:10px;background:#fcfdfd}.card h3,.card h4{margin:0 0 7px}.card p{margin:0;color:var(--muted)}.tag{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--brand2);font-size:12px;margin:2px 4px 2px 0}.tag.orange{background:#fff2e3;color:#a95908}.tag.red{background:#fbecea;color:#a43a33}.tag.blue{background:#eaf2f8;color:#28658d}
+    table{width:100%;border-collapse:collapse;margin:12px 0}th,td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid var(--line)}th{background:#f6f9f8;color:#4d5f65;font-size:12px}td:first-child{font-weight:650}.note{border-left:4px solid var(--brand);background:var(--soft);padding:13px 16px;border-radius:0 8px 8px 0;color:#375d57}.warning{border-left-color:var(--warn);background:#fff7eb}.danger{border-left-color:var(--danger);background:#fdf0ef}.flow{display:flex;align-items:stretch;gap:0;overflow:auto;padding:8px 0}.step{min-width:130px;flex:1;padding:16px 12px;text-align:center;border:1px solid var(--line);background:#fafcfc;position:relative}.step:not(:last-child):after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:16px;height:24px;background:white;color:var(--brand);z-index:1;font-size:22px}.step:first-child{border-radius:10px 0 0 10px}.step:last-child{border-radius:0 10px 10px 0}.step b{display:block;color:var(--brand2)}.step small{color:var(--muted)}
+    .type-list{display:flex;flex-wrap:wrap;gap:8px}.type-list span{padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:#fafcfc}.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px}.shot{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f5f7f7}.shot.wide{grid-column:1/-1}.shot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;cursor:zoom-in;transition:.2s ease}.shot.wide img{aspect-ratio:auto}.shot:hover img{filter:brightness(.94)}.shot:after{content:"点击查看大图 ↗";position:absolute;right:10px;top:10px;padding:4px 8px;border-radius:6px;background:rgba(10,45,42,.82);color:#fff;font-size:11px;opacity:0;transition:.2s;pointer-events:none}.shot:hover:after{opacity:1}.shot figcaption{padding:10px 12px;color:var(--muted)}.scene-rule{display:grid;grid-template-columns:140px 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:12px}.scene-rule>*{padding:12px 14px;border-bottom:1px solid var(--line)}.scene-rule>*:nth-last-child(-n+3){border-bottom:0}.scene-rule b{background:#f3f8f6;color:var(--brand2)}ul{padding-left:20px;margin:8px 0}li{margin:5px 0}.priority{font-weight:800}.p0{color:var(--danger)}.p1{color:var(--warn)}.p2{color:var(--blue)}.backtop{position:fixed;right:28px;bottom:26px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--brand);box-shadow:var(--shadow);display:grid;place-items:center;z-index:3;font-size:18px}.backtop:hover{background:var(--brand);color:#fff}
+    .searchbox{position:fixed;top:74px;right:42px;width:320px;background:#fff;border:1px solid var(--line);padding:10px;box-shadow:var(--shadow);border-radius:10px;z-index:5;display:none}.searchbox.show{display:block}.searchbox input{width:100%;border:1px solid var(--line);border-radius:7px;padding:9px;outline:none}.searchbox small{display:block;margin-top:6px;color:var(--muted)}mark{background:#ffe69b}.mobile-nav{display:none}
+    @media(max-width:900px){.rail{display:none;box-shadow:20px 0 50px rgba(0,0,0,.25)}.rail.open{display:block}.rail-close{display:block}.top,main{margin-left:0}.top{padding:0 18px}.mobile-nav{display:block}.summary,.grid3{grid-template-columns:1fr 1fr}main{padding:20px}.hero{padding:34px 28px}.meta{flex-wrap:wrap}.section{padding:24px 20px}.shots,.grid2{grid-template-columns:1fr}}
+    @media(max-width:560px){.prototype-grid,.summary,.grid3{grid-template-columns:1fr}.scene-rule{grid-template-columns:1fr}.scene-rule>*{border-bottom:1px solid var(--line)!important}.hero h1{font-size:27px}.actions .secondary{display:none}.flow{display:block}.step{margin-bottom:5px}.step:after{display:none}.top{height:auto;padding:10px 14px}.crumb{display:none}}
+    @media print{body{background:#fff}.rail,.top,.searchbox{display:none!important}main{margin:0;padding:0;max-width:none}.hero{box-shadow:none}.section{break-inside:avoid;box-shadow:none}.shots{display:none}}
+  </style>
+</head>
+<body>
+  <aside class="rail">
+    <button class="rail-close" id="railClose" aria-label="关闭目录">×</button>
+    <div class="brand"><span class="brand-mark">安</span><span><b>安全作业管理 PRD</b><small>评审版 · V1.4</small></span></div>
+    <div class="nav-title">DOCUMENT</div>
+    <nav id="nav">
+      <a href="#overview"><span class="num">00</span>文档概览</a><a href="#background"><span class="num">01</span>背景与目标</a><a href="#scope"><span class="num">02</span>范围与角色</a><a href="#flow"><span class="num">03</span>核心业务流程</a><a href="#web"><span class="num">04</span>Web 端需求</a><a href="#plan-template"><span class="num">4A</span>计划与自定义模板</a><a href="#app"><span class="num">05</span>App 端需求</a><a href="#screens"><span class="num">5A</span>页面图谱与规则</a><a href="#rules"><span class="num">06</span>业务规则</a><a href="#data"><span class="num">07</span>数据与接口</a><a href="#nonfunctional"><span class="num">08</span>非功能需求</a><a href="#acceptance"><span class="num">09</span>验收与计划</a><a href="#risk"><span class="num">10</span>风险与待确认</a>
+    </nav>
+    <div class="rail-foot">资料基线：用户操作说明、管理办法、18 类审批模板、Web/App 原型及页面梳理。</div>
+  </aside>
+  <header class="top"><button class="btn mobile-nav" id="railOpen" aria-label="打开目录">☰</button><div class="crumb"><a href="#overview">安全作业管理</a> / <b>产品需求文档</b></div><div class="actions"><button class="btn secondary" id="searchBtn">⌕ 文档检索</button><button class="btn primary" id="printBtn">打印 / 导出 PDF</button></div></header>
+  <div class="searchbox" id="searchbox"><input id="searchInput" placeholder="输入关键词并回车"><small id="searchTip">支持检索页面内标题、规则和字段</small></div>
+  <main>
+    <section class="hero" id="overview"><div class="kicker">Product Requirement Document</div><h1>安全作业管理平台</h1><p>围绕“计划—申请—评估—审批—交底—实施—监护—验收—归档”构建统一的作业许可与现场风险闭环，覆盖集团、二级单位、基层单位及相关方协同。</p><div class="meta"><span>文档版本 <b>V1.4</b></span><span>文档状态 <b class="status">待业务评审</b></span><span>更新日期 <b>2026-08-18</b></span><span>产品形态 <b>Web + App</b></span></div></section>
+    <div class="prototype-grid" aria-label="高保真交互原型入口">
+      <a class="prototype-card" href="codex://threads/01a01296-1edc-7a02-b325-e29c0ed641a3" title="在 Codex 桌面端打开作业管理-pc端会话"><span class="prototype-icon">▣</span><span><h2>Web 端高保真交互原型</h2><p>作业管理-pc端 · 会话持续更新，入口保持不变</p><span class="live">打开最新交互原型</span></span><span class="arrow">↗</span></a>
+      <a class="prototype-card mobile" href="codex://threads/01a0143d-739f-7e52-b134-8089ed8557eb" title="在 Codex 桌面端打开作业管理-移动端会话"><span class="prototype-icon">▯</span><span><h2>移动端高保真交互原型</h2><p>作业管理-移动端 · 会话持续更新，入口保持不变</p><span class="live">打开最新交互原型</span></span><span class="arrow">↗</span></a>
+    </div>
+    <div class="summary"><a class="metric" href="#web" title="查看 Web 端作业类型体系"><small>作业模板</small><b>18 类</b></a><a class="metric" href="#flow" title="查看核心业务流程"><small>核心流程阶段</small><b>8 个</b></a><a class="metric" href="#screens" title="查看双端页面图谱"><small>产品端</small><b>2 端</b></a><a class="metric" href="#acceptance" title="查看 P0 验收标准"><small>首期优先级</small><b>P0 闭环</b></a></div>
+
+    <section class="section" id="background"><div class="section-head"><span class="chapter">01</span><div><h2>背景与目标</h2><p class="lead">从分散表单与线下签批，升级为统一、可追踪、可预警的作业管控体系。</p></div></div>
+      <div class="grid3"><div class="card"><h3>现状问题</h3><p>作业类型多、审批模板差异大；线下签字与现场执行脱节；集团难以实时掌握跨单位风险。</p></div><div class="card"><h3>产品目标</h3><p>一票贯穿全过程、风险措施逐项落实、关键人员实名履责、异常及时预警、过程完整留痕。</p></div><div class="card"><h3>成功口径</h3><p>作业票线上闭环率 ≥ 95%；高风险作业监护覆盖率 100%；到期未验收自动预警率 100%。</p></div></div>
+      <h3>核心原则</h3><div class="type-list"><span>制度映射到系统</span><span>一类作业一套模板</span><span>一人一责一留痕</span><span>现场优先移动端</span><span>异常优先提醒</span><span>数据分级可见</span></div>
+      <p class="note warning"><b>指标说明：</b>以上数值为产品建议目标，需在立项评审时由业务、安监和信息化部门共同确认基线与统计周期。</p>
+    </section>
+
+    <section class="section" id="scope"><div class="section-head"><span class="chapter">02</span><div><h2>范围、边界与角色</h2><p class="lead">一期优先实现作业票业务闭环，分析与智能联动在数据可用后逐步深化。</p></div></div>
+      <table><thead><tr><th>范围</th><th>一期包含</th><th>一期不包含 / 依赖</th></tr></thead><tbody><tr><td>业务</td><td>作业申请、风险评估、措施确认、审批、交底、实施监护、隐患、完工验收、归档</td><td>承包商招采、工程计量、事故调查全流程</td></tr><tr><td>终端</td><td>Web 管理端、App 作业端</td><td>独立小程序、离线原生客户端</td></tr><tr><td>集成</td><td>统一身份、组织人员、消息、附件、地图点位</td><td>视频 AI、IoT 实时设备需对接能力确认</td></tr></tbody></table>
+      <h3>角色与权限</h3><div class="grid3"><div class="card"><h4>申请人 / 作业负责人</h4><p>创建与补正作业票、组织人员与附件、发起验收；仅维护本人或授权范围数据。</p></div><div class="card"><h4>风险评估 / 措施确认人</h4><p>识别风险、选择防范措施、现场核验并签名，不得代替其他责任人确认。</p></div><div class="card"><h4>审批人</h4><p>按作业类型、等级、单位与金额/区域等条件进入审批节点，可退回或驳回。</p></div><div class="card"><h4>监护人 / 作业人员</h4><p>接收交底、签到、现场监护、异常上报、暂停/恢复建议及收尾确认。</p></div><div class="card"><h4>验收人</h4><p>核验人员撤离、工器具清点、环境恢复和设备复位，签署验收结论。</p></div><div class="card"><h4>安监 / 系统管理员</h4><p>跨单位监管、抽查与预警处置；维护模板、流程、字典、阈值和授权。</p></div></div>
+      <p class="note"><b>数据权限：</b>集团查看全级次；单位查看本单位及下属单位；作业相关人员查看本人参与记录。导出、配置与跨单位审批需独立授权。</p>
+    </section>
+
+    <section class="section" id="flow"><div class="section-head"><span class="chapter">03</span><div><h2>核心业务流程</h2><p class="lead">所有作业类型共用主状态机，差异通过模板、等级规则和审批流配置承载。</p></div></div>
+      <div class="flow"><div class="step"><b>1 申请</b><small>基本信息/人员</small></div><div class="step"><b>2 风险评估</b><small>风险与等级</small></div><div class="step"><b>3 措施确认</b><small>逐项核验</small></div><div class="step"><b>4 作业审批</b><small>多级签批</small></div><div class="step"><b>5 安全交底</b><small>培训/签名</small></div><div class="step"><b>6 现场实施</b><small>签到/监护</small></div><div class="step"><b>7 完工验收</b><small>收尾确认</small></div><div class="step"><b>8 归档</b><small>票证/报告</small></div></div>
+      <h3>统一状态机</h3><table><thead><tr><th>业务状态</th><th>进入条件</th><th>允许动作</th><th>退出条件</th></tr></thead><tbody><tr><td>草稿</td><td>创建作业票</td><td>编辑、删除、复制新增、提交</td><td>校验通过并提交</td></tr><tr><td>申请中</td><td>已提交，流程未完成</td><td>审批、退回、驳回、撤回</td><td>审批完成或作废</td></tr><tr><td>待开工</td><td>审批通过</td><td>交底、签到、措施复核、开工</td><td>开工条件全部满足</td></tr><tr><td>作业中</td><td>负责人确认开工</td><td>监护记录、隐患上报、暂停/恢复、申请验收</td><td>验收通过或强制终止</td></tr><tr><td>已完成</td><td>完工验收通过</td><td>查看、导出、追溯</td><td>归档锁定</td></tr><tr><td>作废</td><td>驳回、撤销、超期或终止</td><td>查看原因、复制重提</td><td>终态</td></tr></tbody></table>
+      <p class="note danger"><b>硬控制：</b>审批未通过、交底未全员确认、特种人员资质失效、关键措施未落实或气体检测不合格时，不允许开工。</p>
+      <h3>典型场景：受限空间作业智能监护</h3>
+      <div class="shots"><figure class="shot wide"><img src="PRD素材/受限空间作业智能监护场景.png" alt="受限空间作业智能监护场景"><figcaption><b>场景示意图</b>：监护平板、360°监护布控球、气体检测仪与智能穿戴设备形成现场感知网络。图片用于说明产品能力和设备关系，具体设备型号及界面以集成设计为准。</figcaption></figure></div>
+      <div class="scene-rule">
+        <b>作业前检查</b><span>核验监护设备在线、气体检测合格、人员资质有效、安全措施已逐项确认。</span><span><span class="tag red">阻断规则</span> 任一开工条件不满足时，不得进入“作业中”。</span>
+        <b>作业中监护</b><span>监护平板汇聚实时视频、气体浓度、人员定位和穿戴状态；记录与作业票、点位、设备绑定。</span><span><span class="tag blue">数据规则</span> 按配置频率采集，断联、超限和人员异常分别记录。</span>
+        <b>异常告警</b><span>气体超限、人员异常或设备断联产生不同等级告警，并展示发生时间、位置、检测值及关联人员。</span><span><span class="tag red">状态规则</span> 重大告警自动触发暂停作业并升级通知。</span>
+        <b>联动处置</b><span>通知负责人、监护人和安监人员，启动应急处置；保留确认、到场、处置和解除全过程。</span><span><span class="tag orange">恢复规则</span> 原因消除、复测合格且复查通过后才能恢复。</span>
+        <b>作业后归档</b><span>汇总视频索引、气体曲线、定位轨迹、告警处置、监护记录及验收结论。</span><span><span class="tag">归档规则</span> 生成带版本号的监护报告，归档后只读。</span>
+      </div>
+    </section>
+
+    <section class="section" id="web"><div class="section-head"><span class="chapter">04</span><div><h2>Web 端功能需求</h2><p class="lead">面向管理、监管、配置和综合分析场景。</p></div></div>
+      <table><thead><tr><th>模块</th><th>关键能力</th><th>优先级</th><th>验收要点</th></tr></thead><tbody>
+        <tr><td>安全作业一张图</td><td>状态统计、类型占比、最新作业、GIS 定位、实时视频、隐患/设备报警</td><td class="priority p1">P1</td><td>组织与状态筛选联动；点击点位进入同一作业详情</td></tr>
+        <tr><td>作业计划</td><td>计划编制、审批发布、冲突检测、转作业票和执行进度跟踪</td><td class="priority p0">P0</td><td>计划可拆分多票；转票带入受控数据；所有有效票完成后计划才可完成</td></tr>
+        <tr><td>作业管理</td><td>按分类/类型/状态查询，申请、审批、查看、复制、终止、导出</td><td class="priority p0">P0</td><td>列表、详情、待办使用同一作业主数据与统一状态</td></tr>
+        <tr><td>我的待办</td><td>风险评估、措施确认、作业审批、交底、现场实施、验收、事件处置</td><td class="priority p0">P0</td><td>数量准确，已处理任务不可重复提交，可追溯处理意见</td></tr>
+        <tr><td>隐患排查</td><td>上报、派发、整改、复查、关闭；风险和逾期筛选</td><td class="priority p0">P0</td><td>隐患关联作业票和现场环节，超期自动升级提醒</td></tr>
+        <tr><td>智能监测</td><td>设备点位、阈值、趋势、报警确认、报警关联作业</td><td class="priority p1">P1</td><td>报警时间和值留痕；断联与越限可区分</td></tr>
+        <tr><td>辅助分析</td><td>作业趋势、风险、类型、人员、单位、隐患统计与钻取</td><td class="priority p2">P2</td><td>指标口径可解释，图表可下钻到明细</td></tr>
+        <tr><td>参数配置</td><td>作业类型/等级/审批流、风险措施、交底、结束标准、业务开关</td><td class="priority p0">P0</td><td>配置版本化；已发起作业不受新版本反向影响</td></tr>
+        <tr><td>自定义作业模板</td><td>统一承载审批流表格、自定义表格、字段规则、版本与启停</td><td class="priority p0">P0</td><td>两个子菜单归入同一父菜单；历史业务引用不可变版本快照</td></tr>
+      </tbody></table>
+      <h3>作业类型体系</h3><div class="type-list"><span>常规作业</span><span>有限空间</span><span>高处</span><span>吊装</span><span>临时用电</span><span>动土</span><span>断路</span><span>动火</span><span>盲板抽堵</span><span>探放水</span><span>空区治理</span><span>顶板支护</span><span>爆破</span><span>基坑</span><span>模板及支撑</span><span>起重机械安拆</span><span>脚手架</span><span>拆除工程</span><span>交叉作业</span></div>
+      <h3>作业详情信息架构</h3><div class="grid2"><div class="card"><h4>业务页签</h4><p><span class="tag">基本信息</span><span class="tag">相关人员</span><span class="tag">作业初审</span><span class="tag">风险评估</span><span class="tag">安全措施</span><span class="tag">安全交底</span><span class="tag">作业审批</span><span class="tag">完工验收</span></p></div><div class="card"><h4>监管页签</h4><p><span class="tag orange">监测记录</span><span class="tag red">隐患清单</span><span class="tag blue">操作日志</span><span class="tag">关联票证</span><span class="tag">附件</span><span class="tag">监护报告</span></p></div></div>
+      <div class="shots"><figure class="shot"><img src="原型梳理/screenshots/desktop/01-安全作业一张图.jpg" alt="安全作业一张图"><figcaption>参考原型：安全作业一张图</figcaption></figure><figure class="shot"><img src="原型梳理/screenshots/desktop/05-作业详情.jpg" alt="作业详情"><figcaption>参考原型：作业全过程详情</figcaption></figure></div>
+    </section>
+
+    <section class="section" id="plan-template"><div class="section-head"><span class="chapter">4A</span><div><h2>作业计划与自定义作业模板</h2><p class="lead">先计划、后开票；模板同时定义业务表格、审批数据和提交规则。</p></div></div>
+      <h3>Web 端菜单结构</h3>
+      <div class="grid3"><div class="card"><h4>作业计划</h4><p>计划列表、计划详情、新建/编辑、提交审批、发布、取消、复制和关联作业票。</p></div><div class="card"><h4>自定义作业模板</h4><p>父级菜单，仅承载模板设计相关能力，不直接进入业务页面。</p></div><div class="card"><h4>二级菜单</h4><p><span class="tag blue">审批流表格</span><span class="tag blue">自定义表格</span><br>两个菜单统一归入“自定义作业模板”下。</p></div></div>
+      <p class="note"><b>导航规则：</b>“作业计划”作为作业管理的独立业务菜单；“审批流表格”和“自定义表格”不得继续以一级菜单出现。父菜单展开后保持当前子菜单高亮，刷新页面后按路由恢复展开状态。</p>
+      <h3>作业计划</h3>
+      <table><thead><tr><th>功能</th><th>需求说明</th><th>关键规则</th></tr></thead><tbody>
+        <tr><td>计划列表</td><td>按计划编号、作业类型、单位、区域、负责人、计划时间和状态查询；展示关联作业票数量及执行进度。</td><td>组织权限沿用作业票；默认显示当前周期内本人单位及下属单位计划。</td></tr>
+        <tr><td>新建/编辑</td><td>填写计划名称、类型、单位、地点/设备、起止时间、负责人、预计人数、作业内容及风险概述。</td><td>草稿可编辑删除；提交后按计划审批流办理。结束时间必须晚于开始时间。</td></tr>
+        <tr><td>计划审批与发布</td><td>支持通过、退回、驳回；审批通过后发布并允许关联申请作业票。</td><td>未发布、已取消、已结束的计划不得新建作业票；重大变更需重新审批。</td></tr>
+        <tr><td>计划转作业票</td><td>从计划一键创建作业票，自动带入单位、地点、类型、时间、人员建议、风险点和安全措施。</td><td>来源计划字段默认锁定；确需调整时按模板规则校验，并保留计划值与作业票值差异。</td></tr>
+        <tr><td>进度跟踪</td><td>展示未开票、申请中、作业中、已完成、已取消数量以及总体完成率。</td><td>同一计划可拆分多张作业票；计划完成须所有有效作业票完成或明确取消。</td></tr>
+        <tr><td>冲突检查</td><td>检查同一时间、地点、设备、隔离范围及相关单位的作业冲突。</td><td>命中规则时提示交叉作业；达到强制条件时须创建或关联交叉作业审批。</td></tr>
+      </tbody></table>
+      <h3>自定义作业模板菜单</h3>
+      <table><thead><tr><th>子菜单</th><th>用途</th><th>核心能力</th><th>发布约束</th></tr></thead><tbody>
+        <tr><td>审批流表格</td><td>配置审批节点需要查看、填写和签署的数据表格。</td><td>节点表格绑定、字段读写权限、必填条件、审批意见、签名、会签/或签及退回目标。</td><td>必须绑定已发布审批流版本；审批中的实例继续使用发起时快照。</td></tr>
+        <tr><td>自定义表格</td><td>设计各类作业票、检查表、交底表、监护表及验收表。</td><td>作业类型切换、组件拖拽、分组布局、属性配置、联动规则、预览、版本、复制、启停和导出。</td><td>保存仅生成草稿；发布前完成字段、规则和引用校验，发布后生成不可变版本。</td></tr>
+      </tbody></table>
+      <h3>自定义表格设计器</h3>
+      <div class="grid3"><div class="card"><h4>① 组件库</h4><p>单/多行文本、数字、日期、单选、复选、下拉、人员、部门、图片、附件、地址、定位、子表单、选择数据、手写签名和自定义组件。</p></div><div class="card"><h4>② 设计画布</h4><p>组件拖放、分组、排序、栅格布局、字段复制删除；支持作业类型和模板版本切换。</p></div><div class="card"><h4>③ 属性与规则</h4><p>字段编码、默认值、必填、只读/隐藏、数据源、角色权限、显示条件、校验、联动和提交规则。</p></div></div>
+      <table><thead><tr><th>操作按钮</th><th>规则逻辑</th></tr></thead><tbody><tr><td>编辑模式</td><td>仅草稿或复制生成的新版本可编辑；已发布版本进入编辑时先创建新草稿。</td></tr><tr><td>复制</td><td>复制结构、字段、规则和默认数据源，不复制版本号、发布状态和历史引用关系。</td></tr><tr><td>删除</td><td>仅未发布且未被引用的草稿可物理删除；已发布模板只能停用。</td></tr><tr><td>启用/停用</td><td>启用后可被新业务选择；停用不影响历史作业和运行中流程。</td></tr><tr><td>预览</td><td>按当前草稿模拟 PC/App 展示、条件联动与校验，不写入正式业务数据。</td></tr><tr><td>保存/发布</td><td>保存保留草稿；发布前校验字段编码唯一、必填规则、数据源、审批流引用和移动端兼容性。</td></tr><tr><td>导出</td><td>导出模板定义、版本和规则配置；敏感数据源凭据不得导出。</td></tr></tbody></table>
+      <h3>表单联动与提交规则</h3><ul><li>选择“关联作业计划”后，自动带入计划中的作业类型、地点、时间、风险点和安全措施；受控字段是否允许修改由模板配置。</li><li>选择作业类型后，显示该类型专属字段、附件、风险识别项和审批节点；切换类型前必须确认，避免已填数据丢失。</li><li>选择作业负责人、监护人或作业人员后，自动校验人员资质、在岗状态、角色互斥和同时间段作业冲突。</li><li>提交时依次执行字段必填、格式、跨字段、计划有效性、地点冲突、人员资质及审批流完整性校验；所有阻断项一次性反馈。</li></ul>
+      <div class="shots"><figure class="shot"><img src="PRD素材/自定义表格-可视化编辑参考.png" alt="自定义表格可视化编辑参考"><figcaption><b>设计参考：可视化编辑态</b><br>三栏式组件库、设计画布和属性配置；图中系统名称及菜单仅作视觉参考，正式信息架构以本 PRD 为准。</figcaption></figure><figure class="shot"><img src="PRD素材/自定义表格-表单预览参考.png" alt="自定义表格表单预览参考"><figcaption><b>设计参考：表单预览态</b><br>展示多栏字段、风险标签、安全措施表格及方案附件；正式字段由作业类型模板决定。</figcaption></figure></div>
+      <h3>当前 PC 高保真实现</h3>
+      <div class="shots"><figure class="shot"><img src="高保真原型截图/PC端/14-作业计划列表.png" alt="作业计划列表"><figcaption><b>作业计划列表</b><br>查询计划状态、时间、责任单位与负责人，并查看关联作业票数量和执行进度。</figcaption></figure><figure class="shot"><img src="高保真原型截图/PC端/15-作业计划详情.png" alt="作业计划详情"><figcaption><b>作业计划详情</b><br>汇总计划基本信息、时间区域、风险与措施，以及由计划生成的作业票。</figcaption></figure><figure class="shot"><img src="高保真原型截图/PC端/16-新建作业计划.png" alt="新建作业计划"><figcaption><b>新建作业计划</b><br>计划字段完成校验后保存草稿或提交审批，发布后才允许转作业票。</figcaption></figure><figure class="shot"><img src="高保真原型截图/PC端/17-审批流表格.png" alt="审批流表格"><figcaption><b>自定义作业模板 / 审批流表格</b><br>配置各审批节点的表格、读写权限、意见与签名要求。</figcaption></figure><figure class="shot"><img src="高保真原型截图/PC端/18-自定义表格编辑器.png" alt="自定义表格编辑器"><figcaption><b>自定义作业模板 / 自定义表格</b><br>作业类型、模板版本、组件库、设计画布和属性面板形成完整编辑工作区。</figcaption></figure><figure class="shot"><img src="高保真原型截图/PC端/19-自定义表格预览.png" alt="自定义表格预览"><figcaption><b>自定义表格预览</b><br>模拟正式填报布局、联动和校验；预览数据不进入业务台账。</figcaption></figure></div>
+    </section>
+
+    <section class="section" id="app"><div class="section-head"><span class="chapter">05</span><div><h2>App 端功能需求</h2><p class="lead">面向现场快速办理，重点降低填写成本并保证实名确认。</p></div></div>
+      <div class="grid3"><div class="card"><h3>工作台</h3><p>今日作业、待审批、隐患待处理、八类待办入口、最近作业与消息提醒。</p></div><div class="card"><h3>作业办理</h3><p>扫码/分类进入作业，支持申请、补正、审批、交底签名、开工、暂停、恢复、验收。</p></div><div class="card"><h3>现场记录</h3><p>人员签到、定位、拍照/视频、气体检测、监护记录、隐患上报、异常事件处置。</p></div></div>
+      <h3>移动端交互约束</h3><ul><li>表单按步骤拆分，支持草稿自动保存；必填项在提交前集中校验并定位。</li><li>签名需记录人员 ID、时间、设备与业务上下文；代操作必须启用单位级开关并记录代办人与实际签署人。</li><li>弱网场景允许暂存现场记录，但审批结论、开工与验收必须服务端确认成功后生效。</li><li>扫码可识别作业票、设备或区域；无权限时只展示脱敏摘要并引导申请授权。</li></ul>
+      <div class="shots"><figure class="shot"><img src="原型梳理/screenshots/app/01-App作业管理首页.jpg" alt="App 首页"><figcaption>参考原型：App 作业管理首页</figcaption></figure><figure class="shot"><img src="原型梳理/screenshots/app/08-监护报告.jpg" alt="监护报告"><figcaption>参考原型：作业监护报告</figcaption></figure></div>
+    </section>
+
+    <section class="section" id="screens"><div class="section-head"><span class="chapter">5A</span><div><h2>页面图谱与交互规则</h2><p class="lead">静态图用于评审留档；页首原型卡片进入持续更新的可交互版本。后续截图按固定文件名覆盖即可同步。</p></div></div>
+      <p class="note"><b>资产同步机制：</b>PC 与移动端原型会话分别维护 <code>高保真原型截图/PC端</code> 和 <code>高保真原型截图/移动端</code>。每次原型变更后覆盖同名 PNG 与 manifest.json，PRD 始终通过稳定路径展示最新版本。</p>
+      <h3>当前 PC 高保真原型快照（自动覆盖）</h3>
+      <div class="shots">
+        <figure class="shot"><img src="高保真原型截图/PC端/01-作业管理-首页.png" alt="作业管理首页"><figcaption><b>作业管理首页</b><br>默认入口；汇总今日态势并展示台账。统计卡与筛选后的台账口径需一致。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/02-安全作业一张图.png" alt="安全作业一张图"><figcaption><b>安全作业一张图</b><br>作业占比、场区态势和隐患告警同屏展示；筛选需联动所有组件。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/03-交叉作业.png" alt="交叉作业"><figcaption><b>交叉作业</b><br>当时间、空间、设备或隔离范围相互影响时触发；关联作业均须完成协同确认。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/04-隐患排查.png" alt="隐患排查"><figcaption><b>隐患排查</b><br>统计与整改台账共用同一筛选口径；逾期、高风险和待复查须突出显示。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/05-智能监测.png" alt="智能监测"><figcaption><b>智能监测</b><br>点位状态、实时值与告警关联；设备断联单独展示，不能计为正常。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/06-辅助分析.png" alt="辅助分析"><figcaption><b>辅助分析</b><br>状态、类别、趋势和单位统计支持下钻；指标必须展示口径与更新时间。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/07-参数配置.png" alt="参数配置"><figcaption><b>参数配置</b><br>配置修改需版本化发布；业务记录引用发起时的配置快照。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/08-筛选下拉展开.png" alt="筛选下拉"><figcaption><b>控件：筛选下拉</b><br>作业类型选项仅展示启用项；筛选与关键词、状态、单位条件取交集。原生系统浮层不进入网页截图。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/09-状态切换-待审批.png" alt="待审批状态"><figcaption><b>控件：待审批状态</b><br>点击后只展示待审批记录；角标数量和列表结果必须来自同一查询条件。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/10-作业详情弹窗.png" alt="详情弹窗"><figcaption><b>控件：详情弹窗</b><br>展示所选作业主数据与阶段信息；关闭后保留原列表筛选、页码和滚动位置。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/11-新建作业入口反馈.png" alt="新建作业入口"><figcaption><b>控件：新建作业入口</b><br>当前原型仅有入口反馈；目标态应进入分步申请表单，模板随作业类型切换。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/12-搜索结果-有限空间.png" alt="搜索结果"><figcaption><b>控件：搜索命中</b><br>搜索名称、编号或负责人，输入防抖后更新；结果保留其他筛选条件。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/PC端/13-搜索空状态.png" alt="搜索空状态"><figcaption><b>控件：搜索空状态</b><br>无匹配时说明当前条件并提供清空筛选，不与接口失败或无权限混用。</figcaption></figure>
+      </div>
+      <p class="note warning"><b>PC 原型当前缺口：</b>“我的待办”、导出、审批单、新建作业独立表单以及详情内其他阶段页签尚无独立可达视图；因此暂不生成虚构截图，以目标需求和验收标准约束后续补齐。</p>
+      <h3>当前移动端高保真原型快照（自动覆盖）</h3>
+      <div class="shots">
+        <figure class="shot"><img src="高保真原型截图/移动端/01-首页.png" alt="移动端首页"><figcaption><b>01 首页</b><br>展示组织、概览、待办、作业分类及最近作业；所有角标按本人权限实时计算。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/02-综合作业列表.png" alt="综合作业列表"><figcaption><b>02 综合作业列表</b><br>默认展示全部作业；搜索、类型与状态条件取交集。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/06-综合详情-基本信息.png" alt="综合作业详情"><figcaption><b>03 综合作业详情</b><br>展示当前票证基本信息及附件关联；与分类详情复用同一作业主数据。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/12-待办列表-待处理.png" alt="待办列表"><figcaption><b>04 待办列表</b><br>仅展示本人待处理任务、责任人与截止时间；处理后即时移出。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/15-分类作业列表.png" alt="分类作业列表"><figcaption><b>05 分类作业列表</b><br>角色、状态和单位筛选组合生效；卡片动作受角色和状态约束。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/18-申请作业票.png" alt="申请作业票"><figcaption><b>06 申请作业票</b><br>表单模板随作业类型切换；草稿自动保存，提交执行全量校验。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/20-分类作业详情.png" alt="分类作业详情"><figcaption><b>07 分类作业详情</b><br>展示专项字段、相关人员、过程状态及监护报告入口。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/22-监护报告.png" alt="监护报告"><figcaption><b>08 监护报告</b><br>自动汇总现场监护、异常和完工验收记录，归档后生成版本。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/23-扫码识别.png" alt="扫码识别"><figcaption><b>09 扫码识别</b><br>支持作业票二维码与相册识别；识别后仍执行数据权限校验。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/24-消息中心.png" alt="消息中心"><figcaption><b>10 消息中心</b><br>聚合审批、监护预警和系统消息；已读状态按用户独立维护。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/26-我的.png" alt="我的"><figcaption><b>11 我的</b><br>展示身份、审批统计和个人入口；组织与角色信息来自统一身份系统。</figcaption></figure>
+      </div>
+      <h3>移动端关键状态图</h3>
+      <div class="shots">
+        <figure class="shot"><img src="高保真原型截图/移动端/03-综合列表-搜索空状态.png" alt="搜索空状态"><figcaption><b>搜索空状态</b>：无匹配记录时展示清空条件，不与接口失败混用。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/04-综合列表-类型筛选下拉.png" alt="类型筛选"><figcaption><b>类型筛选下拉</b>：仅展示启用且用户有权查看的作业类型，单选后立即回显。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/05-综合列表-状态页签.png" alt="状态页签"><figcaption><b>状态页签</b>：筛选结果及数量使用同一查询条件。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/07-综合详情-风险评估.png" alt="风险评估"><figcaption><b>风险评估</b>：风险项、等级、备注和证据附件共同形成评估记录。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/08-综合详情-安全措施签名.png" alt="措施签名"><figcaption><b>安全措施签名</b>：措施逐项落实后才能签名，内容改变后原确认失效。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/09-综合详情-安全交底确认.png" alt="交底确认"><figcaption><b>安全交底确认</b>：参与人员逐人确认；未完成时阻断开工。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/10-综合详情-审批动作签名.png" alt="审批签名"><figcaption><b>审批动作签名</b>：填写意见并本人签名，提交前二次确认。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/11-综合详情-审批完成.png" alt="审批完成"><figcaption><b>审批完成</b>：服务端确认成功后更新任务和作业状态，按钮不可重复提交。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/13-待办列表-空状态.png" alt="待办空状态"><figcaption><b>待办空状态</b>：明确当前页签暂无任务，并允许返回或切换状态。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/14-待办列表-异常状态.png" alt="待办异常"><figcaption><b>待办异常状态</b>：说明加载失败原因并提供重试，不展示伪空数据。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/16-分类列表-角色状态页签.png" alt="组合筛选"><figcaption><b>角色/状态组合筛选</b>：两个维度取交集，返回列表时保留选择。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/17-分类列表-筛选下拉.png" alt="单位筛选"><figcaption><b>单位筛选下拉</b>：组织选项受数据权限约束，父组织可包含下属组织。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/19-申请作业票-表单校验.png" alt="表单校验"><figcaption><b>表单校验</b>：必填项红框和中文原因同时展示，并定位首个错误。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/21-分类详情-相关人员.png" alt="相关人员"><figcaption><b>相关人员</b>：按角色显示人员、资质和节点状态，失效资质突出预警。</figcaption></figure>
+        <figure class="shot"><img src="高保真原型截图/移动端/25-消息中心-预警页签.png" alt="预警消息"><figcaption><b>预警消息</b>：只展示预警类消息；点击消息进入对应作业、设备或隐患上下文。</figcaption></figure>
+      </div>
+      <h3>Web 端页面与规则</h3>
+      <div class="shots">
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/01-安全作业一张图.jpg" alt="安全作业一张图"><figcaption><b>01 安全作业一张图</b><br>默认按当前用户组织权限聚合；组织、日期、状态筛选同时驱动统计卡、地图点位、最新作业和报警数据。点击作业点位进入对应作业详情。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/02-作业概览.jpg" alt="作业概览"><figcaption><b>02 作业概览</b><br>数量按当前组织和统计周期实时计算；分类卡进入该分类，近期作业行进入同一主数据详情，不允许展示固定示例数据。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/03-交叉作业分类.jpg" alt="作业分类"><figcaption><b>03 作业分类</b><br>危险作业、危大工程、交叉作业按配置展示；停用类型不允许新建，但历史票仍可查询。分类数量为所属类型的有效作业数。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/04-常规作业列表.jpg" alt="作业列表"><figcaption><b>04 作业列表</b><br>状态页签与关键词、类型、单位、日期条件取交集；重置恢复默认口径；导出复用当前筛选和字段权限；审批按钮仅对当前任务处理人出现。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/05-作业详情.jpg" alt="作业详情"><figcaption><b>05 作业详情</b><br>页签按已发生的业务阶段开放；信息来自当前 ticketNo 对应主数据；签名、审批意见、附件和监测记录只追加不覆盖，归档后只读。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/06-申请作业票.jpg" alt="申请作业票"><figcaption><b>06 申请作业票</b><br>作业类型决定表单模板和必填项；地点/时间/设备触发冲突检测；人员选择校验证书与有效期；草稿可缺少非关键字段，提交必须全量校验。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/07-隐患排查.jpg" alt="隐患排查"><figcaption><b>07 隐患排查</b><br>隐患依次经历待整改、整改中、待复查、已关闭；高风险或逾期自动升级；作业中重大隐患触发暂停，复查通过才允许恢复。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/08-智能监测.jpg" alt="智能监测"><figcaption><b>08 智能监测</b><br>当前值按点位阈值判定正常/预警/报警；设备断联单独标识，不得当作正常；报警确认不等于关闭，需保留处置人与结论。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/09-辅助分析.jpg" alt="辅助分析"><figcaption><b>09 辅助分析</b><br>所有指标继承组织、日期口径；点击图表下钻到明细；“作业数”按作业票去重，“人员数”按人员 ID 去重。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/desktop/10-参数配置.jpg" alt="参数配置"><figcaption><b>10 参数配置</b><br>新增配置先保存草稿，发布后生成新版本；新作业引用最新已发布版本，历史作业保留快照；删除改为停用并校验引用关系。</figcaption></figure>
+      </div>
+      <h3>移动端页面与规则</h3>
+      <div class="shots">
+        <figure class="shot"><img src="原型梳理/screenshots/app/01-App作业管理首页.jpg" alt="移动端首页"><figcaption><b>01 移动端首页</b><br>概览及待办角标仅计算本人可处理数据；最近作业按更新时间倒序；点击待办进入对应任务类型并保留来源。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/02-App作业列表.jpg" alt="综合作业列表"><figcaption><b>02 综合作业列表</b><br>搜索覆盖名称、票号、地点与负责人；状态标签使用统一枚举映射；卡片主操作由当前状态和用户角色共同决定。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/03-App作业详情.jpg" alt="综合作业详情"><figcaption><b>03 综合作业详情</b><br>详情与分类详情必须复用同一组件和数据源；审批通过前二次确认，驳回必须填写原因，重复点击按幂等规则处理。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/04-待办列表-风险评估.jpg" alt="待办列表"><figcaption><b>04 待办列表</b><br>仅展示分配给本人且未处理任务；处理成功即时移出列表；空状态区分“暂无任务”和“加载失败”，并提供刷新入口。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/05-分类作业列表-动火作业.jpg" alt="分类作业列表"><figcaption><b>05 分类作业列表</b><br>角色页签与状态页签取交集；筛选条件支持回显和一键清空；复制新增只复制业务内容，不复制票号、状态、签名及过程记录。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/06-申请作业票.jpg" alt="移动端申请作业票"><figcaption><b>06 申请作业票</b><br>分步填写并自动保存草稿；关联票证只能选择有效票；人员新增受单位级开关控制；提交失败保留已填内容并定位首个错误项。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/07-分类作业详情.jpg" alt="分类作业详情"><figcaption><b>07 分类作业详情</b><br>显示该类型的专项字段与过程进度；进行中才允许生成监护记录；按钮权限由任务、角色和状态三者同时校验。</figcaption></figure>
+        <figure class="shot"><img src="原型梳理/screenshots/app/08-监护报告.jpg" alt="监护报告"><figcaption><b>08 监护报告</b><br>报告从作业主数据、签到、监护、异常和验收记录自动汇总；已归档版本带生成时间和版本号，重新生成不得覆盖旧版。</figcaption></figure>
+      </div>
+      <h3>关键控件状态规则</h3>
+      <table><thead><tr><th>控件 / 状态图</th><th>触发方式</th><th>规则逻辑</th><th>异常与反馈</th></tr></thead><tbody>
+        <tr><td>组织/类型/状态下拉</td><td>点击选择框</td><td>选项按权限与启用状态加载；多条件取交集；选中后保留回显，刷新按页面定义决定是否保留。</td><td>无可选项展示原因；加载失败可重试，不静默使用过期数据。</td></tr>
+        <tr><td>日期范围</td><td>选择起止日期</td><td>开始时间不得晚于结束时间；默认统计周期和最大跨度可配置；作业查询按计划时间相交计算。</td><td>非法范围就地提示并禁止查询/提交。</td></tr>
+        <tr><td>人员选择器</td><td>选择负责人、监护人或作业人员</td><td>按组织、岗位、资质过滤；同一人员的互斥角色由作业类型配置；离职、停用或证书过期不可选。</td><td>失效项说明具体原因；已选人员后续失效触发预警。</td></tr>
+        <tr><td>审批弹窗</td><td>点击通过、退回或驳回</td><td>通过可按节点要求填写意见；退回必须选择目标节点；驳回必须填写原因；提交前二次确认。</td><td>提交中禁用重复操作；服务端失败保留意见并允许重试。</td></tr>
+        <tr><td>签名/交底确认</td><td>本人签名或授权代操作</td><td>绑定人员 ID、任务 ID、时间、设备和内容版本；内容变化后原确认失效，需重新签署。</td><td>签名失败不改变任务状态；代操作展示醒目标识并双人留痕。</td></tr>
+        <tr><td>开工/暂停/恢复</td><td>详情页主操作</td><td>开工检查审批、交底、人员资质、措施和检测；重大隐患/报警可触发暂停；恢复需整改复查通过。</td><td>不满足条件时列出阻断项，不只展示通用错误。</td></tr>
+        <tr><td>表单校验</td><td>离开字段、切换步骤、提交</td><td>字段级即时校验，提交时全量校验；隐藏字段不校验，条件重新满足后恢复；草稿允许非关键项缺失。</td><td>顶部给出错误数量，并自动定位首个错误字段。</td></tr>
+        <tr><td>空状态/无权限</td><td>列表无数据或越权访问</td><td>空数据、筛选无结果、加载失败、无权限使用不同文案和动作；无权限不泄露敏感详情。</td><td>分别提供新建、清空筛选、重试或返回入口。</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="section" id="rules"><div class="section-head"><span class="chapter">06</span><div><h2>关键业务规则</h2><p class="lead">规则应配置化，但关键安全底线不可被普通用户绕过。</p></div></div>
+      <table><thead><tr><th>编号</th><th>规则</th><th>处理</th></tr></thead><tbody><tr><td>BR-01</td><td>作业时间、区域或设备发生冲突</td><td>提示交叉作业风险；达到配置条件时强制发起交叉作业审批</td></tr><tr><td>BR-02</td><td>同一作业包含多种危险作业</td><td>主票关联多张专项票，各专项票均满足开工条件后方可开工</td></tr><tr><td>BR-03</td><td>人员证书在计划结束前到期</td><td>禁止选用；已开工后失效则预警并要求更换人员</td></tr><tr><td>BR-04</td><td>作业票超过批准时间</td><td>自动转为暂停/失效，不得补录执行记录；延期须重新审批</td></tr><tr><td>BR-05</td><td>审批退回与驳回</td><td>退回允许补正后回到指定节点；驳回结束流程并记录原因</td></tr><tr><td>BR-06</td><td>现场出现报警或重大隐患</td><td>触发暂停作业和消息升级，整改复查通过后才可恢复</td></tr><tr><td>BR-07</td><td>模板或流程发生变更</td><td>新申请使用新版本；历史作业保留发起时版本快照</td></tr><tr><td>BR-08</td><td>作业完成</td><td>人员撤离、工器具清点、隔离解除、场地恢复等结束标准逐项确认</td></tr></tbody></table>
+      <h3>消息与时效</h3><div class="grid3"><div class="card"><h4>待办提醒</h4><p>任务生成即时提醒；临近超时再次提醒；超时按组织层级升级。</p></div><div class="card"><h4>现场预警</h4><p>人员资质、检测超限、设备断联、未按时监护、作业票到期。</p></div><div class="card"><h4>送达渠道</h4><p>站内信为必选，App 推送/短信/企业消息按集成条件配置。</p></div></div>
+    </section>
+
+    <section class="section" id="data"><div class="section-head"><span class="chapter">07</span><div><h2>数据模型与集成</h2><p class="lead">以作业票为聚合根，避免 Web、App、列表和详情各自维护不同数据。</p></div></div>
+      <table><thead><tr><th>数据域</th><th>核心实体</th><th>关键关联</th></tr></thead><tbody><tr><td>组织人员</td><td>组织、用户、岗位、角色、资质、相关方单位</td><td>人员归属组织；资质含类别、证号、有效期</td></tr><tr><td>作业计划</td><td>计划、计划明细、计划审批、计划变更</td><td>一个计划可关联多张作业票；保留计划值与实际票证差异</td></tr><tr><td>作业许可</td><td>作业票、专项票、类型、等级、地点、设备、项目</td><td>主票可关联多张专项票、设备与空间点位</td></tr><tr><td>过程控制</td><td>风险、措施、交底、签到、检测、监护、验收</td><td>每条确认记录关联责任人、时间与证据附件</td></tr><tr><td>流程任务</td><td>流程实例、节点、任务、意见、签名</td><td>任务状态与作业主状态分离，支持会签/或签</td></tr><tr><td>模板设计</td><td>模板、模板版本、表格、字段、布局、规则、数据源</td><td>审批流表格和自定义表格归属同一模板；业务引用已发布版本</td></tr><tr><td>安全事件</td><td>隐患、报警、事件、整改、复查</td><td>关联作业、区域、设备和责任组织</td></tr><tr><td>审计配置</td><td>流程版本、字典、阈值、操作日志</td><td>历史业务引用版本快照，不随配置覆盖</td></tr></tbody></table>
+      <h3>核心字段（作业票）</h3><p><span class="tag">workPermitId</span><span class="tag">ticketNo</span><span class="tag">workTypeId</span><span class="tag">templateVersion</span><span class="tag">riskLevel</span><span class="tag">status</span><span class="tag">orgId</span><span class="tag">locationId / 坐标</span><span class="tag">plannedStart / End</span><span class="tag">actualStart / End</span><span class="tag">applicantId</span><span class="tag">responsibleId</span><span class="tag">guardianIds</span><span class="tag">projectId</span><span class="tag">relatedTicketIds</span></p>
+      <h3>外部系统依赖</h3><div class="grid2"><div class="card"><h4>必须依赖</h4><p>统一登录、组织人员、权限、文件存储、消息中心、电子签名/手写签名能力。</p></div><div class="card"><h4>条件依赖</h4><p>GIS、视频平台、IoT 监测、人员定位、证照系统、施工项目/设备台账。</p></div></div>
+    </section>
+
+    <section class="section" id="nonfunctional"><div class="section-head"><span class="chapter">08</span><div><h2>非功能与安全要求</h2><p class="lead">安全业务系统既要可用，也要可追责。</p></div></div>
+      <div class="grid3"><div class="card"><h3>性能</h3><p>常用列表首屏 ≤ 3 秒；提交操作 ≤ 2 秒给出结果；大屏统计 ≤ 5 秒。</p></div><div class="card"><h3>可用性</h3><p>核心作业办理月可用性建议 ≥ 99.9%；提交具备幂等保护和失败重试提示。</p></div><div class="card"><h3>安全</h3><p>最小权限、敏感字段脱敏、传输/存储加密、附件病毒检测、越权校验。</p></div><div class="card"><h3>审计</h3><p>新增、修改、审批、签名、导出、配置均记录操作者、时间、前后值与来源端。</p></div><div class="card"><h3>兼容</h3><p>Web 适配主流 Chromium 内核；App 页面适配常用手机分辨率与系统字号。</p></div><div class="card"><h3>归档</h3><p>作业票、签名、附件和过程记录按制度年限保存；归档后不可直接修改。</p></div></div>
+      <p class="note warning">性能阈值与保存年限需结合集团基础设施、并发规模和档案制度在技术评审时确认。</p>
+    </section>
+
+    <section class="section" id="acceptance"><div class="section-head"><span class="chapter">09</span><div><h2>验收标准与实施建议</h2><p class="lead">用端到端业务场景验收，不只检查页面是否存在。</p></div></div>
+      <h3>P0 端到端验收场景</h3><ol><li>申请人创建一张动火作业票，选择单位、人员、地点、时间，关联临时用电专项票并提交。</li><li>系统按风险等级生成风险评估、措施确认和多级审批任务；退回补正后可继续，历史意见保留。</li><li>审批通过后，全体作业人员完成交底签名；资质失效人员被阻止加入，关键措施未确认时不能开工。</li><li>作业中产生一条高风险隐患，系统暂停作业；整改与复查通过后恢复，监护过程持续留痕。</li><li>完成收尾确认和验收，作业转为已完成，生成可下载的作业票与监护报告，统计口径同步更新。</li></ol>
+      <h3>分期建议</h3><table><thead><tr><th>阶段</th><th>交付范围</th><th>准出条件</th></tr></thead><tbody><tr><td>MVP</td><td>统一主数据、模板/流程配置、作业申请审批、交底、现场实施、验收、待办</td><td>3 个代表性类型跑通闭环</td></tr><tr><td>一期</td><td>18 类模板、隐患闭环、App 现场能力、报表归档、权限审计</td><td>全部类型 UAT 通过</td></tr><tr><td>二期</td><td>GIS 一张图、IoT/视频联动、交叉作业识别、分析预警</td><td>外部接口稳定、指标口径确认</td></tr></tbody></table>
+    </section>
+
+    <section class="section" id="risk"><div class="section-head"><span class="chapter">10</span><div><h2>风险、假设与待确认</h2><p class="lead">以下问题会影响流程、数据结构或上线边界，需要业务评审结论。</p></div></div>
+      <table><thead><tr><th>#</th><th>待确认项</th><th>建议决策</th><th>影响</th></tr></thead><tbody><tr><td>Q1</td><td>“常规作业”是否独立票种，还是未命中危险类型的兜底分类？</td><td>明确准入定义与模板</td><td>类型体系</td></tr><tr><td>Q2</td><td>有限空间/受限空间术语是否统一？</td><td>统一业务名称，保留历史别名</td><td>模板与统计</td></tr><tr><td>Q3</td><td>审批层级、会签/或签和不同风险等级规则？</td><td>输出审批矩阵</td><td>流程引擎</td></tr><tr><td>Q4</td><td>代签适用范围及法律效力？</td><td>默认关闭，单位授权后启用并双人留痕</td><td>签名审计</td></tr><tr><td>Q5</td><td>延期、暂停、恢复、变更人员是否需要重新审批？</td><td>按变更项配置重审范围</td><td>状态机</td></tr><tr><td>Q6</td><td>视频、IoT、GIS、人员定位现有厂商及接口能力？</td><td>开展接口摸底并定义降级方案</td><td>二期集成</td></tr><tr><td>Q7</td><td>组织数据范围沿用“外运长航”还是调整为鞍钢矿业组织？</td><td>以主数据系统和本项目业主为准</td><td>权限与文案</td></tr><tr><td>Q8</td><td>指标目标、保存年限、并发量和 SLA？</td><td>技术与业务联合定标</td><td>架构与验收</td></tr></tbody></table>
+      <p class="note"><b>原型差异处理：</b>当前原型存在 Web 详情固定数据、App 双数据源、状态术语不一、待办及扫码等入口未接通。正式建设必须以本 PRD 的统一状态机和统一作业主数据为准。</p>
+      <h3>资料来源</h3><ul><li>《安全作业管理》Web/App 用户操作说明</li><li>《鞍钢集团矿业有限公司作业审批管理办法》及修订材料</li><li>18 类危险作业/危大工程/交叉作业审批模板</li><li>Web 与 App 产品原型、页面截图及交互梳理</li></ul>
+    </section>
+  </main>
+  <a class="backtop" href="#overview" title="返回文档顶部" aria-label="返回文档顶部">↑</a>
+  <script>
+    const links=[...document.querySelectorAll('#nav a')],sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+    const observer=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-20% 0px -70%'});sections.forEach(s=>s&&observer.observe(s));
+    const box=document.getElementById('searchbox'),input=document.getElementById('searchInput'),tip=document.getElementById('searchTip');
+    document.getElementById('searchBtn').onclick=()=>{box.classList.toggle('show');if(box.classList.contains('show'))input.focus()};
+    document.getElementById('printBtn').onclick=()=>window.print();
+    const rail=document.querySelector('.rail');document.getElementById('railOpen').onclick=()=>rail.classList.add('open');document.getElementById('railClose').onclick=()=>rail.classList.remove('open');links.forEach(a=>a.addEventListener('click',()=>rail.classList.remove('open')));
+    document.querySelectorAll('.shot img').forEach(img=>{img.tabIndex=0;img.setAttribute('role','link');img.title='打开静态图原文件';const open=()=>window.open(encodeURI(img.getAttribute('src')),'_blank');img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+    input.addEventListener('keydown',e=>{if(e.key!=='Enter')return;document.querySelectorAll('mark').forEach(m=>m.replaceWith(m.textContent));const q=input.value.trim();if(!q){tip.textContent='请输入检索词';return}const walker=document.createTreeWalker(document.querySelector('main'),NodeFilter.SHOW_TEXT);let n,count=0,first;const nodes=[];while(n=walker.nextNode())if(n.parentElement.tagName!=='SCRIPT'&&n.nodeValue.includes(q))nodes.push(n);nodes.forEach(node=>{const frag=document.createDocumentFragment(),parts=node.nodeValue.split(q);parts.forEach((p,i)=>{frag.append(p);if(i<parts.length-1){const m=document.createElement('mark');m.textContent=q;frag.append(m);first??=m;count++}});node.replaceWith(frag)});tip.textContent=count?`找到 ${count} 处匹配`:'未找到匹配内容';first?.scrollIntoView({behavior:'smooth',block:'center'});});
+  </script>
+</body>
+</html>
