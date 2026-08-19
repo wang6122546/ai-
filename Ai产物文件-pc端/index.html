@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安作云 · 作业管理</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="regular.css" />
+  <link rel="stylesheet" href="approval-engine.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">安</span><span><b>安作云</b><small>安全作业管理平台</small></span></div>
+    <nav>
+      <a href="#" data-view="overview"><span>⌂</span>安全作业一张图</a>
+      <a href="#" data-view="todo"><span>✓</span>我的待办<i>12</i></a>
+      <a href="#" data-view="plans"><span>▥</span>作业计划</a>
+      <div class="nav-group"><button type="button"><span>▣</span>作业管理<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="regular"><span>•</span>常规作业</a>
+          <a class="active" href="#" data-view="jobs"><span>•</span>危险作业</a>
+          <a href="#" data-view="cross"><span>•</span>交叉作业</a>
+          <a href="#" data-view="major"><span>•</span>危大工程</a>
+        </div>
+      </div>
+      <div class="nav-group"><button type="button"><span>◉</span>作业监控<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="surveillance"><span>•</span>布控球管理</a>
+          <a href="#" data-view="monitor"><span>•</span>智能监测</a>
+        </div>
+      </div>
+      <a href="#" data-view="alarms"><span>⚠</span>告警管理<i>4</i></a>
+      <a href="#" data-view="hazards"><span>△</span>隐患排查</a>
+      <a href="#" data-view="analysis"><span>▤</span>辅助分析</a>
+      <div class="nav-group"><button type="button"><span>◇</span>自定义作业模板<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="approval"><span>•</span>审批流表格</a>
+          <a href="#" data-view="formbuilder"><span>•</span>自定义表格</a>
+        </div>
+      </div>
+      <a href="#" data-view="config"><span>⚙</span>参数配置</a>
+    </nav>
+    <div class="side-help"><b>安全值守中心</b><span>7×24小时风险响应</span><button>联系值守人员</button></div>
+  </aside>
+
+  <main>
+    <header>
+      <button class="mobile-menu" aria-label="展开菜单">☰</button>
+      <div><h1>作业管理</h1><p>统一管理作业申请、审批、执行与验收全过程</p></div>
+      <div class="header-actions"><button class="icon-btn" title="消息">♢<em></em></button><div class="avatar">王</div><div class="user"><b>王安全</b><span>安全管理部</span></div></div>
+    </header>
+
+    <section class="content" id="pageContent">
+      <div class="work-template-switch"><div class="template-context"><span>危险作业模板</span><strong>有限空间作业</strong></div><div class="work-type-tags" data-group="危险作业"><button class="active">有限空间</button><button>高处作业</button><button>吊装作业</button><button>临时用电</button><button>动土作业</button><button>断路作业</button><button>爆破作业（井下）</button><button>爆破作业（露天）</button><button>盲板抽堵</button><button>支护作业</button><button>探放水作业</button><button>露天采空区探测治理采掘作业</button></div></div>
+      <div class="overview-head"><div><span class="eyebrow">今日作业态势</span><h2>上午好，重点关注 <strong>10 项</strong> 高风险作业</h2><p>数据更新于 2026-08-18 09:32</p></div><button class="primary" id="newJob">＋ 新建作业</button></div>
+      <div class="stats">
+        <article><div class="stat-icon blue">▦</div><div><span>今日作业</span><b>26</b><small>较昨日 <i>+4</i></small></div></article>
+        <article><div class="stat-icon orange">⌛</div><div><span>待我审批</span><b>12</b><small>其中 4 项即将超时</small></div></article>
+        <article><div class="stat-icon red">!</div><div><span>高风险作业</span><b>3</b><small>已全部落实监护人</small></div></article>
+        <article><div class="stat-icon green">✓</div><div><span>执行中</span><b>8</b><small>现场状态正常</small></div></article>
+      </div>
+
+      <section class="panel">
+        <div class="panel-top"><div class="tabs"><button class="active" data-status="全部">全部作业 <span>26</span></button><button data-status="待审批">待审批 <span>12</span></button><button data-status="执行中">执行中 <span>8</span></button><button data-status="已完成">已完成 <span>6</span></button></div><button class="ghost">↧ 导出</button></div>
+        <div class="filters"><label class="search">⌕<input id="search" placeholder="搜索作业名称、编号或负责人" /></label><select id="typeFilter"><option>全部作业类型</option><option>动火作业</option><option>有限空间</option><option>高处作业</option><option>吊装作业</option><option>临时用电</option></select><select><option>全部所属单位</option><option>齐大山铁矿</option><option>东鞍山铁矿</option><option>大孤山铁矿</option></select><button class="date">2026-08-18　⌄</button><button class="reset" id="reset">重置</button></div>
+        <div class="table-wrap"><table><thead><tr><th>作业信息</th><th>作业类型 / 等级</th><th>作业区域</th><th>作业时间</th><th>负责人</th><th>当前状态</th><th></th></tr></thead><tbody id="jobRows"></tbody></table></div>
+        <footer class="pagination"><span>共 26 条记录</span><div><button disabled>‹</button><button class="current">1</button><button>2</button><button>3</button><button>›</button></div></footer>
+      </section>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="eyebrow">作业详情</span><h2 id="modalTitle">作业信息</h2><div id="modalBody"></div><div class="modal-actions"><button class="ghost" id="cancelModal">关闭</button><button class="primary">查看审批单</button></div></div></div>
+  <div class="toast" id="toast">原型提示：新建作业流程将在下一页面接入</div>
+  <script src="app.js"></script>
+  <script src="regular.js"></script>
+  <script src="approval-engine.js"></script>
+</body>
+</html>
