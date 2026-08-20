@@ -1,0 +1,45 @@
+name: 产品或原型需求
+description: 提交 PRD、PC 或移动端需求
+title: "[需求] "
+labels: ["需求"]
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景与目标
+      description: 为什么要做，期望解决什么问题？
+    validations:
+      required: true
+  - type: checkboxes
+    id: surfaces
+    attributes:
+      label: 涉及范围
+      options:
+        - label: PRD
+        - label: PC 端
+        - label: 移动端
+        - label: 公共规则或设计规范
+  - type: textarea
+    id: sources
+    attributes:
+      label: 事实源
+      description: 列出 PRD、制度、决策记录或其他依据的仓库路径。
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 不涉及范围
+      description: 明确本次不应修改的模块和规则。
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收标准
+      description: 使用可逐项验证的编号列表。
+    validations:
+      required: true
+  - type: textarea
+    id: questions
+    attributes:
+      label: 待确认问题
+      description: 尚未决定的问题不得由实现人员或 Codex 自行推断。
