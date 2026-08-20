@@ -10,5 +10,5 @@
 **/*-debug.log*
 **/logs/
 **/*.log
+.artifact_work/
 Ai产物文件-pc端/*_副本.*
-
