@@ -2,6 +2,8 @@
 **/.DS_Store
 **/node_modules/
 **/dist/
+!Ai产物文件-移动端/dist/
+!Ai产物文件-移动端/dist/**
 **/build/
 **/.cache/
 **/.env*
