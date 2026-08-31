@@ -4,12 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>安作云 · 作业管理</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="regular.css" />
-  <link rel="stylesheet" href="approval-engine.css" />
-  <link rel="stylesheet" href="job-wizard.css" />
-  <link rel="stylesheet" href="cross-wizard.css" />
-  <link rel="stylesheet" href="gis-map.css" />
+  <link rel="stylesheet" href="styles.css?v=20260829" />
+  <link rel="stylesheet" href="regular.css?v=20260829" />
+  <link rel="stylesheet" href="approval-engine.css?v=20260829" />
+  <link rel="stylesheet" href="job-wizard.css?v=20260829" />
+  <link rel="stylesheet" href="cross-wizard.css?v=20260829" />
+  <link rel="stylesheet" href="gis-map.css?v=20260829" />
+  <link rel="stylesheet" href="template-center.css?v=20260829" />
+  <link rel="stylesheet" href="plan.css?v=20260829-2" />
+  <link rel="stylesheet" href="one-case.css?v=20260830-2" />
 </head>
 <body>
   <aside class="sidebar">
@@ -18,6 +21,7 @@
       <a href="#" data-view="overview"><span>⌂</span>安全作业一张图</a>
       <a href="#" data-view="todo"><span>✓</span>我的待办<i>12</i></a>
       <a href="#" data-view="plans"><span>▥</span>作业计划</a>
+      <a href="#" data-view="onecase"><span>▧</span>一件一案</a>
       <div class="nav-group"><button type="button"><span>▣</span>作业管理<b>⌃</b></button>
         <div class="subnav">
           <a href="#" data-view="regular"><span>•</span>常规作业</a>
@@ -37,8 +41,9 @@
       <a href="#" data-view="analysis"><span>▤</span>辅助分析</a>
       <div class="nav-group"><button type="button"><span>◇</span>自定义作业模板<b>⌃</b></button>
         <div class="subnav">
-          <a href="#" data-view="approval"><span>•</span>审批流表格</a>
-          <a href="#" data-view="formbuilder"><span>•</span>自定义表格</a>
+          <a href="#" data-view="templatecenter"><span>•</span>作业模板中心</a>
+          <a href="#" data-view="templatedrafts"><span>•</span>设计草稿</a>
+          <a href="#" data-view="templateversions"><span>•</span>发布记录</a>
         </div>
       </div>
       <a href="#" data-view="config"><span>⚙</span>参数配置</a>
@@ -74,11 +79,11 @@
 
   <div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="eyebrow">作业详情</span><h2 id="modalTitle">作业信息</h2><div id="modalBody"></div><div class="modal-actions"><button class="ghost" id="cancelModal">关闭</button><button class="primary">查看审批单</button></div></div></div>
   <div class="toast" id="toast">原型提示：新建作业流程将在下一页面接入</div>
-  <script src="app.js"></script>
-  <script src="regular.js"></script>
-  <script src="approval-engine.js"></script>
-  <script src="job-wizard.js"></script>
-  <script src="cross-wizard.js"></script>
-  <script src="gis-map.js"></script>
+  <script src="app.js?v=20260830-2"></script>
+  <script src="regular.js?v=20260829"></script>
+  <script src="approval-engine.js?v=20260829"></script>
+  <script src="job-wizard.js?v=20260829"></script>
+  <script src="cross-wizard.js?v=20260829"></script>
+  <script src="gis-map.js?v=20260829"></script>
 </body>
 </html>
