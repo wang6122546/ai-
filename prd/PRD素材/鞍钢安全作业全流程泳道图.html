@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Angsteel Safety Work Flow</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Angsteel Safety Work Flow" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Angsteel Safety Work Flow&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress {
+  display: flex;
+  height: 6px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 6px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style&gt;
+#angsteel-flow{font-family:&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif;color:var(--foreground);padding:8px;overflow:auto}
+#angsteel-flow .vf-title{text-align:center;font-size:21px;font-weight:750;margin:3px 0 5px}
+#angsteel-flow .vf-sub{text-align:center;font-size:12px;color:var(--muted-foreground);margin-bottom:12px}
+#angsteel-flow svg{display:block;width:100%;min-width:1040px;height:auto;background:light-dark(#fff,#121517);border:1px solid var(--border)}
+#angsteel-flow text{font-size:12px;fill:light-dark(#24323a,#edf2f4)}
+#angsteel-flow .lane{fill:light-dark(#fbfcfd,#181b1e);stroke:light-dark(#b9c4ca,#465158)}
+#angsteel-flow .head{fill:light-dark(#e7f2ef,#17342f);stroke:light-dark(#7fa99f,#4f8177)}
+#angsteel-flow .phase{fill:light-dark(#eef5f2,#1a2e29);stroke:light-dark(#9ab9b1,#4d7269)}
+#angsteel-flow .box{fill:light-dark(#fff,#22272b);stroke:light-dark(#71848d,#82939b);stroke-width:1.2;rx:7}
+#angsteel-flow .source{fill:light-dark(#eaf5ff,#172f43);stroke:light-dark(#4d91c5,#5fa9e1);stroke-width:1.4;rx:9}
+#angsteel-flow .gate{fill:light-dark(#fff6dc,#3c3114);stroke:light-dark(#c49727,#d2ad4d);stroke-width:1.3}
+#angsteel-flow .video{fill:light-dark(#e9f7ef,#163529);stroke:light-dark(#3a9a68,#4db77b);stroke-width:1.3;rx:7}
+#angsteel-flow .stop{fill:light-dark(#fff0ee,#431d1b);stroke:light-dark(#cd5148,#e06860);stroke-width:1.3;rx:7}
+#angsteel-flow .line{fill:none;stroke:light-dark(#485860,#b8c3c8);stroke-width:1.8;marker-end:url(#ag-arrow)}
+#angsteel-flow .dash{stroke-dasharray:5 4}
+#angsteel-flow .small{font-size:10px;fill:light-dark(#596a73,#c4cdd1)}
+#angsteel-flow .h{font-size:14px;font-weight:700}
+#angsteel-flow .p{font-size:15px;font-weight:750}
+&lt;/style&gt;
+&lt;div id=&quot;angsteel-flow&quot;&gt;
+  &lt;div class=&quot;vf-title&quot;&gt;鞍钢安全作业全流程泳道图&lt;/div&gt;
+  &lt;div class=&quot;vf-sub&quot;&gt;双准入主线：一件一案 · 无视频不作业｜依据《鞍钢集团矿业有限公司作业审批管理办法》及已确认产品规则梳理&lt;/div&gt;
+  &lt;svg viewBox=&quot;0 0 1500 2480&quot; role=&quot;img&quot; aria-label=&quot;鞍钢安全作业从准入、申请审批、开工、实施监管、变更、收尾到归档的全流程泳道图&quot;&gt;
+    &lt;defs&gt;&lt;marker id=&quot;ag-arrow&quot; markerWidth=&quot;8&quot; markerHeight=&quot;8&quot; refX=&quot;7&quot; refY=&quot;4&quot; orient=&quot;auto&quot;&gt;&lt;path d=&quot;M0 0L8 4L0 8Z&quot; fill=&quot;light-dark(#485860,#b8c3c8)&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;
+    &lt;rect class=&quot;head&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;120&quot; height=&quot;70&quot;/&gt;
+    &lt;rect class=&quot;head&quot; x=&quot;120&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;315&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;510&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;705&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;900&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;1095&quot; y=&quot;0&quot; width=&quot;195&quot; height=&quot;70&quot;/&gt;&lt;rect class=&quot;head&quot; x=&quot;1290&quot; y=&quot;0&quot; width=&quot;210&quot; height=&quot;70&quot;/&gt;
+    &lt;text class=&quot;h&quot; x=&quot;217&quot; y=&quot;41&quot; text-anchor=&quot;middle&quot;&gt;业主单位&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;412&quot; y=&quot;41&quot; text-anchor=&quot;middle&quot;&gt;施工单位&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;607&quot; y=&quot;33&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;施工负责人&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;/安全监护人&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;802&quot; y=&quot;33&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;专业主管部门&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;/会签单位&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;997&quot; y=&quot;33&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;997&quot;&gt;分级审批人&lt;/tspan&gt;&lt;tspan x=&quot;997&quot; dy=&quot;18&quot;&gt;A / B / C&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;1192&quot; y=&quot;33&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;安全作业平台&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;流程与留痕&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;h&quot; x=&quot;1395&quot; y=&quot;33&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1395&quot;&gt;安全监管人&lt;/tspan&gt;&lt;tspan x=&quot;1395&quot; dy=&quot;18&quot;&gt;/视频智能监控&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;phase&quot; x=&quot;0&quot; y=&quot;70&quot; width=&quot;120&quot; height=&quot;500&quot;/&gt;&lt;rect class=&quot;phase&quot; x=&quot;0&quot; y=&quot;570&quot; width=&quot;120&quot; height=&quot;650&quot;/&gt;&lt;rect class=&quot;phase&quot; x=&quot;0&quot; y=&quot;1220&quot; width=&quot;120&quot; height=&quot;800&quot;/&gt;&lt;rect class=&quot;phase&quot; x=&quot;0&quot; y=&quot;2020&quot; width=&quot;120&quot; height=&quot;460&quot;/&gt;
+    &lt;text class=&quot;p&quot; x=&quot;60&quot; y=&quot;280&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;60&quot;&gt;准&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;入&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;立&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;项&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;p&quot; x=&quot;60&quot; y=&quot;835&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;60&quot;&gt;申&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;请&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;审&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;批&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;p&quot; x=&quot;60&quot; y=&quot;1550&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;60&quot;&gt;开&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;工&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;实&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;施&lt;/tspan&gt;&lt;/text&gt;&lt;text class=&quot;p&quot; x=&quot;60&quot; y=&quot;2190&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;60&quot;&gt;收&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;尾&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;归&lt;/tspan&gt;&lt;tspan x=&quot;60&quot; dy=&quot;24&quot;&gt;档&lt;/tspan&gt;&lt;/text&gt;
+    &lt;g&gt;&lt;rect class=&quot;lane&quot; x=&quot;120&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;315&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;510&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;705&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;900&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;1095&quot; y=&quot;70&quot; width=&quot;195&quot; height=&quot;2410&quot;/&gt;&lt;rect class=&quot;lane&quot; x=&quot;1290&quot; y=&quot;70&quot; width=&quot;210&quot; height=&quot;2410&quot;/&gt;&lt;path d=&quot;M0 570H1500M0 1220H1500M0 2020H1500&quot; stroke=&quot;light-dark(#89979e,#65737a)&quot;/&gt;&lt;/g&gt;
+
+    &lt;!-- 双来源准入 --&gt;
+    &lt;rect class=&quot;source&quot; x=&quot;145&quot; y=&quot;110&quot; width=&quot;145&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;217&quot; y=&quot;136&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;217&quot;&gt;来源一：作业计划&lt;/tspan&gt;&lt;tspan x=&quot;217&quot; dy=&quot;18&quot;&gt;/项目任务/临时抢修&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;source&quot; x=&quot;335&quot; y=&quot;110&quot; width=&quot;155&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;136&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;来源二：施工申请&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;作业内容与人员&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;607,105 680,145 607,185 534,145&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;140&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;是否涉及特殊作业&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;17&quot;&gt;危险/交叉/危大？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;535&quot; y=&quot;225&quot; width=&quot;145&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;250&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;是：纳入“一件一案”&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;选择对应危险作业模板&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;335&quot; y=&quot;225&quot; width=&quot;155&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;250&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;否：按规程/检修工单&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;仍执行监管确认&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;730&quot; y=&quot;225&quot; width=&quot;145&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;250&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;识别作业类型与数量&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;评定综合风险 A/B/C&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;1192,220 1265,260 1192,300 1119,260&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;255&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;视频覆盖方案&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;17&quot;&gt;是否具备？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;stop&quot; x=&quot;1318&quot; y=&quot;226&quot; width=&quot;150&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;1393&quot; y=&quot;250&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1393&quot;&gt;否：不得进入审批&lt;/tspan&gt;&lt;tspan x=&quot;1393&quot; dy=&quot;18&quot;&gt;补充布控点/设备/网络&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;video&quot; x=&quot;1118&quot; y=&quot;350&quot; width=&quot;148&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;375&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;是：绑定视频设备&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;点位、视角、在线校验&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;730&quot; y=&quot;350&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;375&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;确定审批/监管强度&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;A全程、B/C动态监管&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;145&quot; y=&quot;455&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;217&quot; y=&quot;480&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;217&quot;&gt;发起作业项目备案&lt;/tspan&gt;&lt;tspan x=&quot;217&quot; dy=&quot;18&quot;&gt;原则上作业前一日报告&lt;/tspan&gt;&lt;/text&gt;
+    &lt;path class=&quot;line&quot; d=&quot;M290 141H534M490 141H534M607 185V225M680 259H730M875 259H1119M1265 260H1318M1192 300V350M1118 383H875M802 416V455H290&quot;/&gt;&lt;path class=&quot;line dash&quot; d=&quot;M534 145H500V259H490&quot;/&gt;&lt;text class=&quot;small&quot; x=&quot;618&quot; y=&quot;213&quot;&gt;是&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;502&quot; y=&quot;136&quot;&gt;判定&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;505&quot; y=&quot;220&quot;&gt;否&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1273&quot; y=&quot;250&quot;&gt;否&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1203&quot; y=&quot;336&quot;&gt;是&lt;/text&gt;
+
+    &lt;!-- 申请审批 --&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;145&quot; y=&quot;610&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;217&quot; y=&quot;635&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;217&quot;&gt;编制“一件一案”&lt;/tspan&gt;&lt;tspan x=&quot;217&quot; dy=&quot;18&quot;&gt;禁入区域/活动组织&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;340&quot; y=&quot;610&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;635&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;填写危险作业步骤&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;风险与防范措施&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;535&quot; y=&quot;715&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;740&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;组织全员安全交底&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;逐人签字＋监护人审核&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;730&quot; y=&quot;610&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;635&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;专项会签&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;水电汽/安全/生产等&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;730&quot; y=&quot;820&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;845&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;专业审核&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;模板、风险、措施、资质&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;925&quot; y=&quot;820&quot; width=&quot;145&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;997&quot; y=&quot;845&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;997&quot;&gt;按 A/B/C 分级审批&lt;/tspan&gt;&lt;tspan x=&quot;997&quot; dy=&quot;18&quot;&gt;最终审批人本人签字&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;997,935 1065,975 997,1015 929,975&quot;/&gt;&lt;text x=&quot;997&quot; y=&quot;980&quot; text-anchor=&quot;middle&quot;&gt;审批通过？&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;1118&quot; y=&quot;820&quot; width=&quot;148&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;845&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;固化审批记录&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;票证/模板/签名版本&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;1318&quot; y=&quot;935&quot; width=&quot;150&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;1393&quot; y=&quot;960&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1393&quot;&gt;作业前现场确认&lt;/tspan&gt;&lt;tspan x=&quot;1393&quot; dy=&quot;18&quot;&gt;资质/交底/措施/视频&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;1192,1080 1265,1120 1192,1160 1119,1120&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;1115&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;开工条件&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;17&quot;&gt;全部满足？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;path class=&quot;line&quot; d=&quot;M217 521V610M290 646H340M485 646H730M607 682V715M607 787V856H730M875 856H925M1070 856H1118M997 892V935M1065 975H1318M1393 1007V1060H1260M1192 1160V1215&quot;/&gt;&lt;path class=&quot;line dash&quot; d=&quot;M929 975H900V751H680M1119 1120H1090V646H875&quot;/&gt;&lt;text class=&quot;small&quot; x=&quot;1075&quot; y=&quot;963&quot;&gt;是&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;905&quot; y=&quot;965&quot;&gt;否/退回补正&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1092&quot; y=&quot;1110&quot;&gt;否/阻断&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1203&quot; y=&quot;1180&quot;&gt;是&lt;/text&gt;
+
+    &lt;!-- 实施监管 --&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;340&quot; y=&quot;1260&quot; width=&quot;145&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;1286&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;按审批区域开工作业&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;不得擅自扩大范围&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;535&quot; y=&quot;1260&quot; width=&quot;145&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;1286&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;持“一件一案”原件&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;全程旁站式监护&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;video&quot; x=&quot;1118&quot; y=&quot;1260&quot; width=&quot;148&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;1286&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;开启视频监控&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;连续留痕/状态检测&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;video&quot; x=&quot;1318&quot; y=&quot;1360&quot; width=&quot;150&quot; height=&quot;72&quot;/&gt;&lt;text x=&quot;1393&quot; y=&quot;1385&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1393&quot;&gt;A：全过程监管&lt;/tspan&gt;&lt;tspan x=&quot;1393&quot; dy=&quot;18&quot;&gt;B/C：动态巡查监管&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;1192,1455 1265,1495 1192,1535 1119,1495&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;1490&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;视频是否在线&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;17&quot;&gt;且覆盖有效？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;stop&quot; x=&quot;925&quot; y=&quot;1462&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;997&quot; y=&quot;1487&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;997&quot;&gt;否：自动暂停作业&lt;/tspan&gt;&lt;tspan x=&quot;997&quot; dy=&quot;18&quot;&gt;告警升级＋现场处置&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;802,1570 875,1610 802,1650 729,1610&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;1605&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;要素/人员/风险&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;17&quot;&gt;是否变化？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;535&quot; y=&quot;1577&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;1602&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;仅人员变更&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;资质复核＋重新交底签字&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;stop&quot; x=&quot;730&quot; y=&quot;1705&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;802&quot; y=&quot;1730&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;802&quot;&gt;要素/风险变化&lt;/tspan&gt;&lt;tspan x=&quot;802&quot; dy=&quot;18&quot;&gt;停止并重新办理审批&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;1393,1570 1465,1610 1393,1650 1321,1610&quot;/&gt;&lt;text x=&quot;1393&quot; y=&quot;1605&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1393&quot;&gt;报警/重大隐患&lt;/tspan&gt;&lt;tspan x=&quot;1393&quot; dy=&quot;17&quot;&gt;发生？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;stop&quot; x=&quot;1318&quot; y=&quot;1705&quot; width=&quot;150&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;1393&quot; y=&quot;1730&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1393&quot;&gt;暂停＋整改&lt;/tspan&gt;&lt;tspan x=&quot;1393&quot; dy=&quot;18&quot;&gt;复查通过后恢复&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;340&quot; y=&quot;1850&quot; width=&quot;145&quot; height=&quot;66&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;1875&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;继续作业并记录&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;过程监管确认表&lt;/tspan&gt;&lt;/text&gt;
+    &lt;path class=&quot;line&quot; d=&quot;M1192 1215V1260M1118 1291H680M485 1291H535M1266 1291H1393V1360M1393 1432V1450H1260M1119 1495H1070M997 1528V1560H875M729 1610H680M802 1650V1705M1465 1610H1480V1738H1468M1393 1771V1820H485M535 1610H500V1883H485M1192 1535V1820H485&quot;/&gt;&lt;path class=&quot;line dash&quot; d=&quot;M1321 1610H1260V1883H485M875 1738H900V1180H1192&quot;/&gt;&lt;text class=&quot;small&quot; x=&quot;1080&quot; y=&quot;1484&quot;&gt;否&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1203&quot; y=&quot;1550&quot;&gt;是&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;688&quot; y=&quot;1600&quot;&gt;仅人员&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;813&quot; y=&quot;1685&quot;&gt;其他变化&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1270&quot; y=&quot;1600&quot;&gt;否&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;1468&quot; y=&quot;1600&quot;&gt;是&lt;/text&gt;
+
+    &lt;!-- 收尾归档 --&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;340&quot; y=&quot;2060&quot; width=&quot;145&quot; height=&quot;62&quot;/&gt;&lt;text x=&quot;412&quot; y=&quot;2086&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;412&quot;&gt;作业结束&lt;/tspan&gt;&lt;tspan x=&quot;412&quot; dy=&quot;18&quot;&gt;人员撤离/工器具清点&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;535&quot; y=&quot;2160&quot; width=&quot;145&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;607&quot; y=&quot;2185&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;607&quot;&gt;施工负责人确认收尾&lt;/tspan&gt;&lt;tspan x=&quot;607&quot; dy=&quot;18&quot;&gt;清理、隔离、设备复位&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;145&quot; y=&quot;2160&quot; width=&quot;145&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;217&quot; y=&quot;2185&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;217&quot;&gt;业主活动发起人&lt;/tspan&gt;&lt;tspan x=&quot;217&quot; dy=&quot;18&quot;&gt;共同到场复核并签字&lt;/tspan&gt;&lt;/text&gt;
+    &lt;polygon class=&quot;gate&quot; points=&quot;997,2155 1068,2195 997,2235 926,2195&quot;/&gt;&lt;text x=&quot;997&quot; y=&quot;2190&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;997&quot;&gt;收尾验收&lt;/tspan&gt;&lt;tspan x=&quot;997&quot; dy=&quot;17&quot;&gt;是否通过？&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;video&quot; x=&quot;1118&quot; y=&quot;2160&quot; width=&quot;148&quot; height=&quot;68&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;2185&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;关闭视频任务&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;固化视频索引与告警记录&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;145&quot; y=&quot;2310&quot; width=&quot;145&quot; height=&quot;70&quot;/&gt;&lt;text x=&quot;217&quot; y=&quot;2335&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;217&quot;&gt;收回“一件一案”原件&lt;/tspan&gt;&lt;tspan x=&quot;217&quot; dy=&quot;18&quot;&gt;总结评价/沉淀案例库&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect class=&quot;box&quot; x=&quot;1118&quot; y=&quot;2310&quot; width=&quot;148&quot; height=&quot;70&quot;/&gt;&lt;text x=&quot;1192&quot; y=&quot;2335&quot; text-anchor=&quot;middle&quot;&gt;&lt;tspan x=&quot;1192&quot;&gt;归档锁定&lt;/tspan&gt;&lt;tspan x=&quot;1192&quot; dy=&quot;18&quot;&gt;票证/签名/视频/整改/验收&lt;/tspan&gt;&lt;/text&gt;
+    &lt;ellipse class=&quot;box&quot; cx=&quot;997&quot; cy=&quot;2430&quot; rx=&quot;58&quot; ry=&quot;27&quot;/&gt;&lt;text x=&quot;997&quot; y=&quot;2435&quot; text-anchor=&quot;middle&quot;&gt;流程结束&lt;/text&gt;
+    &lt;path class=&quot;line&quot; d=&quot;M412 1916V2060M412 2122V2160H535M535 2194H290M680 2194H926M1068 2195H1118M1192 2228V2310M1118 2345H290M217 2380V2430H939&quot;/&gt;&lt;path class=&quot;line dash&quot; d=&quot;M926 2195H900V2091H485&quot;/&gt;&lt;text class=&quot;small&quot; x=&quot;1075&quot; y=&quot;2184&quot;&gt;通过&lt;/text&gt;&lt;text class=&quot;small&quot; x=&quot;905&quot; y=&quot;2184&quot;&gt;不通过/补正&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
