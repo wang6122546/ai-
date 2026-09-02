@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安作云 · 作业管理</title>
+  <link rel="stylesheet" href="styles.css?v=20260902-2" />
+  <link rel="stylesheet" href="regular.css?v=20260829" />
+  <link rel="stylesheet" href="approval-engine.css?v=20260829" />
+  <link rel="stylesheet" href="job-wizard.css?v=20260901-2" />
+  <link rel="stylesheet" href="cross-wizard.css?v=20260829" />
+  <link rel="stylesheet" href="gis-map.css?v=20260829" />
+  <link rel="stylesheet" href="template-center.css?v=20260829" />
+  <link rel="stylesheet" href="plan.css?v=20260831-1" />
+  <link rel="stylesheet" href="one-case.css?v=20260830-2" />
+  <link rel="stylesheet" href="job-list-redesign.css?v=20260901-1" />
+  <link rel="stylesheet" href="job-group-empty.css?v=20260902-1" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">安</span><span><b>安全作业管理</b></span></div>
+    <nav>
+      <a href="#" data-view="overview"><span>⌂</span>安全作业一张图</a>
+      <a href="#" data-view="todo"><span>✓</span>我的待办<i>12</i></a>
+      <a href="#" data-view="plans"><span>▥</span>作业计划</a>
+      <a href="#" data-view="onecase"><span>▧</span>一件一案</a>
+      <div class="nav-group"><button type="button"><span>▣</span>作业管理<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="regular"><span>•</span>常规作业</a>
+          <a class="active" href="#" data-view="jobs"><span>•</span>危险作业</a>
+          <a href="#" data-view="cross"><span>•</span>交叉作业</a>
+          <a href="#" data-view="major"><span>•</span>危大工程</a>
+        </div>
+      </div>
+      <div class="nav-group"><button type="button"><span>◉</span>作业监控<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="surveillance"><span>•</span>布控球管理</a>
+          <a href="#" data-view="monitor"><span>•</span>智能监测</a>
+        </div>
+      </div>
+      <a href="#" data-view="alarms"><span>⚠</span>告警管理<i>4</i></a>
+      <a href="#" data-view="hazards"><span>△</span>隐患排查</a>
+      <a href="#" data-view="analysis"><span>▤</span>辅助分析</a>
+      <div class="nav-group"><button type="button"><span>◇</span>自定义作业模板<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#" data-view="templatecenter"><span>•</span>作业模板中心</a>
+          <a href="#" data-view="templatedrafts"><span>•</span>设计草稿</a>
+          <a href="#" data-view="templateversions"><span>•</span>发布记录</a>
+        </div>
+      </div>
+      <a href="#" data-view="config"><span>⚙</span>参数配置</a>
+    </nav>
+    <div class="side-help"><b>安全值守中心</b><span>7×24小时风险响应</span><button>联系值守人员</button></div>
+  </aside>
+
+  <main>
+    <header>
+      <button class="mobile-menu" aria-label="展开菜单">☰</button>
+      <div><h1>作业管理</h1><p>统一管理作业申请、审批、执行与验收全过程</p></div>
+      <div class="header-actions"><button class="icon-btn" title="消息">♢<em></em></button><div class="avatar">王</div><div class="user"><b>王安全</b><span>安全管理部</span></div></div>
+    </header>
+
+    <section class="content" id="pageContent">
+      <div class="page-breadcrumb">作业管理　/　<span>受限空间作业</span></div>
+      <section class="job-launcher" aria-labelledby="launcherTitle">
+        <div class="launcher-heading"><div><span class="launcher-icon">＋</span><div><h2 id="launcherTitle">发起危险作业</h2><p>先选择作业类型，再创建对应的作业票</p></div></div><button class="primary" id="newJob">＋ 新增作业</button></div>
+        <div class="work-template-switch"><div class="work-type-tags" data-group="危险作业"><button class="active"><span>有限空间</span></button><button><span>高处作业</span></button><button><span>吊装作业</span></button><button><span>临时用电</span></button><button><span>动土作业</span></button><button><span>断路作业</span></button><button><span>爆破作业（井下）</span></button><button><span>爆破作业（露天）</span></button><button class="more-work-types"><span>更多作业类型</span><b>⌄</b></button></div></div>
+      </section>
+
+      <section class="panel">
+        <div class="scope-row"><b>作业范围</b><div class="tabs"><button class="active" data-scope="applied">我申请的 <span>13</span></button><button data-scope="joined">我参与的 <span>8</span></button><button data-scope="all">全部作业 <span>26</span></button></div></div>
+        <div class="status-row"><b>作业状态</b><div class="job-status-tabs"></div></div>
+        <div class="filters job-filters"><label class="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" placeholder="搜索作业名称、编号或负责人" /></label><select id="typeFilter"><option>全部作业类型</option><option>动火作业</option><option>有限空间</option><option>高处作业</option><option>吊装作业</option><option>临时用电</option></select><select id="unitFilter"><option>全部所属单位</option><option>齐大山铁矿</option><option>东鞍山铁矿</option><option>大孤山铁矿</option></select><button class="date" title="计划开始日期">计划开始日期：2026-08-18　⌄</button><button class="more-filter">更多筛选</button><button class="reset" id="reset">重置</button><button class="ghost export-job-list">↧ 导出</button></div>
+        <div class="active-filters" id="activeFilters"><span>当前条件</span><button data-clear="scope">我申请的 ×</button><button data-clear="status">全部状态 ×</button></div>
+        <div class="table-wrap job-list-wrap"><table><thead><tr><th>序号</th><th>作业票编号</th><th>作业类型</th><th>作业等级</th><th>作业内容</th><th>负责人/作业单位</th><th>计划时间</th><th>作业所在单位</th><th>作业进度</th><th>申请时间</th><th>待处理人</th><th>当前状态</th><th>操作</th></tr></thead><tbody id="jobRows"></tbody></table></div>
+        <footer class="pagination"><span>共 26 条记录</span><div><button disabled>‹</button><button class="current">1</button><button>2</button><button>3</button><button>›</button></div></footer>
+      </section>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="eyebrow">作业详情</span><h2 id="modalTitle">作业信息</h2><div id="modalBody"></div><div class="modal-actions"><button class="ghost" id="cancelModal">关闭</button><button class="primary">查看审批单</button></div></div></div>
+  <div class="toast" id="toast">原型提示：新建作业流程将在下一页面接入</div>
+  <script src="app.js?v=20260902-4"></script>
+  <script src="regular.js?v=20260901-1"></script>
+  <script src="approval-engine.js?v=20260829"></script>
+  <script src="job-wizard.js?v=20260901-2"></script>
+  <script src="cross-wizard.js?v=20260829"></script>
+  <script src="gis-map.js?v=20260829"></script>
+</body>
+</html>
