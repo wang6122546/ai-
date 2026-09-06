@@ -1,0 +1,6 @@
+.embedded .sidebar,.embedded > main > header{display:none}
+.embedded main{margin-left:0}
+.embedded #app{padding:18px 20px}
+.embedded .guide{margin-bottom:14px}
+.embedded .build-shell,.embedded .form-build{margin:-18px -20px}
+.embedded .wizard-strip{margin:-18px -20px 14px}

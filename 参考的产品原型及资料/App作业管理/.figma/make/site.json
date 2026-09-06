@@ -1,0 +1,10 @@
+{
+  "description": "Streamlines task and job management with intuitive modules for risk assessment, approvals, and on-site operations, enhancing productivity for app users.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

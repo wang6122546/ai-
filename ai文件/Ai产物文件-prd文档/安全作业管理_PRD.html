@@ -90,6 +90,8 @@
         <tr><td>自定义作业模板</td><td>统一承载审批流表格、自定义表格、字段规则、版本与启停</td><td class="priority p0">P0</td><td>两个子菜单归入同一父菜单；历史业务引用不可变版本快照</td></tr>
       </tbody></table>
       <h3>作业类型体系</h3><div class="type-list"><span>常规作业</span><span>有限空间</span><span>高处</span><span>吊装</span><span>临时用电</span><span>动土</span><span>断路</span><span>动火</span><span>盲板抽堵</span><span>探放水</span><span>空区治理</span><span>顶板支护</span><span>爆破</span><span>基坑</span><span>模板及支撑</span><span>起重机械安拆</span><span>脚手架</span><span>拆除工程</span><span>交叉作业</span></div>
+      <h3>参数配置联动规则</h3><div class="grid2"><div class="card"><h4>作业类型与等级</h4><p>作业类型最多维护两级节点：一级节点作为作业管理菜单及模板中心横向分类，二级节点作为具体作业类型和模板卡片。作业等级必须归属于二级作业类型；相同作业类型的等级在列表中合并展示。</p></div><div class="card"><h4>风险点与适用规则</h4><p>风险点适用等级支持多选，选项仅来自当前作业类型已配置的等级。等级管控规则在“作业类型配置”维护；风险点触发规则在“风险内容配置 / 风险点详情 / 适用规则”维护，申请端合并两类规则后执行。</p></div></div>
+      <p class="note"><b>配置生效：</b>作业类型发布后同步更新作业管理菜单和自定义作业模板分类；配置需版本化，已发起作业继续引用发起时的配置快照。</p>
       <h3>作业详情信息架构</h3><div class="grid2"><div class="card"><h4>业务页签</h4><p><span class="tag">基本信息</span><span class="tag">相关人员</span><span class="tag">作业初审</span><span class="tag">风险评估</span><span class="tag">安全措施</span><span class="tag">安全交底</span><span class="tag">作业审批</span><span class="tag">完工验收</span></p></div><div class="card"><h4>监管页签</h4><p><span class="tag orange">监测记录</span><span class="tag red">隐患清单</span><span class="tag blue">操作日志</span><span class="tag">关联票证</span><span class="tag">附件</span><span class="tag">监护报告</span></p></div></div>
       <div class="shots"><figure class="shot"><img src="原型梳理/screenshots/desktop/01-安全作业一张图.jpg" alt="安全作业一张图"><figcaption>参考原型：安全作业一张图</figcaption></figure><figure class="shot"><img src="原型梳理/screenshots/desktop/05-作业详情.jpg" alt="作业详情"><figcaption>参考原型：作业全过程详情</figcaption></figure></div>
     </section>
@@ -114,6 +116,7 @@
       </tbody></table>
       <h3>自定义表格设计器</h3>
       <div class="grid3"><div class="card"><h4>① 组件库</h4><p>单/多行文本、数字、日期、单选、复选、下拉、人员、部门、图片、附件、地址、定位、子表单、选择数据、手写签名和自定义组件。</p></div><div class="card"><h4>② 设计画布</h4><p>组件拖放、分组、排序、栅格布局、字段复制删除；支持作业类型和模板版本切换。</p></div><div class="card"><h4>③ 属性与规则</h4><p>字段编码、默认值、必填、只读/隐藏、数据源、角色权限、显示条件、校验、联动和提交规则。</p></div></div>
+      <p class="note"><b>模板与数据：</b>创建向导第一步用于确定模板名称、编码、分类、适用终端以及数据结构，不直接填写具体作业记录。每个模板必须且只能绑定一个主表，可绑定多个关联表；主表保存作业票核心记录，关联表保存风险措施、人员、检测、交底、附件和验收等一对多数据。</p>
       <table><thead><tr><th>操作按钮</th><th>规则逻辑</th></tr></thead><tbody><tr><td>编辑模式</td><td>仅草稿或复制生成的新版本可编辑；已发布版本进入编辑时先创建新草稿。</td></tr><tr><td>复制</td><td>复制结构、字段、规则和默认数据源，不复制版本号、发布状态和历史引用关系。</td></tr><tr><td>删除</td><td>仅未发布且未被引用的草稿可物理删除；已发布模板只能停用。</td></tr><tr><td>启用/停用</td><td>启用后可被新业务选择；停用不影响历史作业和运行中流程。</td></tr><tr><td>预览</td><td>按当前草稿模拟 PC/App 展示、条件联动与校验，不写入正式业务数据。</td></tr><tr><td>保存/发布</td><td>保存保留草稿；发布前校验字段编码唯一、必填规则、数据源、审批流引用和移动端兼容性。</td></tr><tr><td>导出</td><td>导出模板定义、版本和规则配置；敏感数据源凭据不得导出。</td></tr></tbody></table>
       <h3>表单联动与提交规则</h3><ul><li>选择“关联作业计划”后，自动带入计划中的作业类型、地点、时间、风险点和安全措施；受控字段是否允许修改由模板配置。</li><li>选择作业类型后，显示该类型专属字段、附件、风险识别项和审批节点；切换类型前必须确认，避免已填数据丢失。</li><li>选择作业负责人、监护人或作业人员后，自动校验人员资质、在岗状态、角色互斥和同时间段作业冲突。</li><li>提交时依次执行字段必填、格式、跨字段、计划有效性、地点冲突、人员资质及审批流完整性校验；所有阻断项一次性反馈。</li></ul>
       <div class="shots"><figure class="shot"><img src="PRD素材/自定义表格-可视化编辑参考.png" alt="自定义表格可视化编辑参考"><figcaption><b>设计参考：可视化编辑态</b><br>三栏式组件库、设计画布和属性配置；图中系统名称及菜单仅作视觉参考，正式信息架构以本 PRD 为准。</figcaption></figure><figure class="shot"><img src="PRD素材/自定义表格-表单预览参考.png" alt="自定义表格表单预览参考"><figcaption><b>设计参考：表单预览态</b><br>展示多栏字段、风险标签、安全措施表格及方案附件；正式字段由作业类型模板决定。</figcaption></figure></div>
@@ -234,6 +237,10 @@
     <section class="section" id="acceptance"><div class="section-head"><span class="chapter">09</span><div><h2>验收标准与实施建议</h2><p class="lead">用端到端业务场景验收，不只检查页面是否存在。</p></div></div>
       <h3>P0 端到端验收场景</h3><ol><li>申请人创建一张动火作业票，选择单位、人员、地点、时间，关联临时用电专项票并提交。</li><li>系统按风险等级生成风险评估、措施确认和多级审批任务；退回补正后可继续，历史意见保留。</li><li>审批通过后，全体作业人员完成交底签名；资质失效人员被阻止加入，关键措施未确认时不能开工。</li><li>作业中产生一条高风险隐患，系统暂停作业；整改与复查通过后恢复，监护过程持续留痕。</li><li>完成收尾确认和验收，作业转为已完成，生成可下载的作业票与监护报告，统计口径同步更新。</li></ol>
       <h3>分期建议</h3><table><thead><tr><th>阶段</th><th>交付范围</th><th>准出条件</th></tr></thead><tbody><tr><td>MVP</td><td>统一主数据、模板/流程配置、作业申请审批、交底、现场实施、验收、待办</td><td>3 个代表性类型跑通闭环</td></tr><tr><td>一期</td><td>18 类模板、隐患闭环、App 现场能力、报表归档、权限审计</td><td>全部类型 UAT 通过</td></tr><tr><td>二期</td><td>GIS 一张图、IoT/视频联动、交叉作业识别、分析预警</td><td>外部接口稳定、指标口径确认</td></tr></tbody></table>
+    </section>
+
+    <section class="section" id="work-type-linkage"><div class="section-head"><span class="chapter">9.1</span><div><h2>作业类型配置联动规则</h2><p class="lead">作业管理菜单、模板分类和参数配置统一读取两级作业类型树。</p></div></div>
+      <table><thead><tr><th>规则</th><th>系统行为</th></tr></thead><tbody><tr><td>一级节点生效</td><td>至少维护一个二级节点后，一级节点才同步到作业管理菜单和自定义模板；空一级节点仅保留在综合配置中。</td></tr><tr><td>列表形态</td><td>一级节点下只有一个二级节点时使用常规作业列表；超过一个二级节点时使用分类作业列表。</td></tr><tr><td>申请入口</td><td>所有作业类型统一通过“申请作业票”进入新增流程。</td></tr><tr><td>排序联动</td><td>一级节点可同级排序并携带其全部二级节点移动；二级节点只能在所属一级节点内排序，结果同步菜单及参数页。</td></tr><tr><td>参数联动</td><td>作业等级只选择二级作业类型；风险、交底和结束确认选择“全部”时同步适用于该作业类型全部等级。</td></tr></tbody></table>
     </section>
 
     <section class="section" id="risk"><div class="section-head"><span class="chapter">10</span><div><h2>风险、假设与待确认</h2><p class="lead">以下问题会影响流程、数据结构或上线边界，需要业务评审结论。</p></div></div>
