@@ -5,7 +5,7 @@
 启动：
 
 ```bash
-cd Ai产物文件-pc端
+cd ai文件/Ai产物文件-pc端
 python3 -m http.server 4173
 ```
 
@@ -22,7 +22,7 @@ python3 -m http.server 4173
 首次启动或依赖变化后：
 
 ```bash
-cd Ai产物文件-移动端
+cd ai文件/Ai产物文件-移动端
 npm ci
 npm run dev
 ```
@@ -47,7 +47,7 @@ npm run build
 启动：
 
 ```bash
-cd Ai产物文件-prd文档
+cd ai文件/Ai产物文件-prd文档
 python3 -m http.server 4174
 ```
 

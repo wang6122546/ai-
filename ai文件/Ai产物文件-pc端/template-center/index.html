@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安作云 · 作业设计中心</title>
+  <link rel="stylesheet" href="styles.css?v=20260829">
+  <link rel="stylesheet" href="wizard.css?v=20260829">
+  <link rel="stylesheet" href="online-flow.css?v=20260829">
+  <link rel="stylesheet" href="embedded.css?v=20260829">
+  <link rel="stylesheet" href="wizard-settings.css?v=20260904">
+  <link rel="stylesheet" href="canvas-sort.css?v=20260905">
+  <link rel="stylesheet" href="design-workflow.css?v=20260906">
+  <link rel="stylesheet" href="designer-properties.css?v=20260906">
+  <style>@media (min-width:1101px) and (max-width:1280px){.designer{grid-template-columns:170px minmax(0,1fr) 240px}.designer>.panel:last-child{display:block}}</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>安</span><div><b>安作云</b><small>安全作业管理平台</small></div></div>
+    <nav>
+      <button class="active" data-page="center"><i>▦</i>作业模板中心</button>
+      <button data-page="drafts"><i>◫</i>设计草稿</button>
+      <button data-page="versions"><i>◷</i>发布记录</button>
+    </nav>
+    <div class="scope"><b>独立设计空间</b><p>完成设计和验证后，再接入 PC 端替换原有设计器。</p></div>
+  </aside>
+
+  <main>
+    <header>
+      <div><h1 id="pageTitle">作业模板中心</h1><p id="pageSubtitle">统一设计作业申请表单与审批流程</p></div>
+      <div class="user"><button class="icon-button">♢</button><span>王</span><div><b>王安全</b><small>安全管理部</small></div></div>
+    </header>
+    <section id="app"></section>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalBody"></div></div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js?v=20260902-1"></script>
+  <script src="interactive-controls.js?v=20260829"></script>
+  <script src="borrowed-features.js?v=20260829"></script>
+  <script src="wizard-settings.js?v=20260906"></script>
+  <script src="canvas-sort.js?v=20260906"></script>
+  <script src="design-workflow.js?v=20260906"></script>
+  <script src="designer-properties.js?v=20260906-1"></script>
+</body>
+</html>
