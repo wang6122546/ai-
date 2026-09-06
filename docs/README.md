@@ -8,4 +8,4 @@
 - `CHANGELOG.md`：产品及原型变更记录。
 - `decisions/`：需要长期保留的重要产品决策。
 
-正式 PRD 当前位于 `../Ai产物文件-prd文档/安全作业管理_PRD.html`。移动文件前必须评估现有链接和 GitHub Pages 发布路径，避免直接重排造成访问失效。
+正式 PRD 当前位于 `../ai文件/Ai产物文件-prd文档/安全作业管理_PRD.html`。移动文件前必须评估现有链接和 GitHub Pages 发布路径，避免直接重排造成访问失效。
