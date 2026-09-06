@@ -1,4 +1,4 @@
-const templates=[
+let templates=[
   {id:'earth',name:'动土作业',code:'DTZY',icon:'⌁',status:'已发布',version:'V3',updated:'2026-08-26',category:'土建施工'},
   {id:'hot',name:'动火作业',code:'DHZY',icon:'♨',status:'已发布',version:'V5',updated:'2026-08-28',category:'危险作业'},
   {id:'height',name:'高处作业',code:'GCZY',icon:'↟',status:'草稿',version:'V2',updated:'2026-08-29',category:'危险作业'},
@@ -12,7 +12,15 @@ const templates=[
   {id:'water',name:'探放水作业',code:'TFSZ',icon:'≈',status:'已发布',version:'V2',updated:'2026-08-20',category:'矿山作业'},
   {id:'cross',name:'交叉作业',code:'JCZY',icon:'⌘',status:'草稿',version:'V1',updated:'2026-08-29',category:'组合模板'}
 ];
-const categories=['全部模板','危险作业','土建施工','特种作业','矿山作业','组合模板'];
+let categories=['全部模板','危险作业','土建施工','特种作业','矿山作业','组合模板'];
+try{
+ const configured=JSON.parse(localStorage.getItem('safeWorkTypeHierarchy')||'[]');
+ if(configured.length){
+  categories=['全部模板',...configured.map(x=>x.name)];
+  const existing=new Map(templates.map(x=>[x.name,x]));
+  templates=configured.flatMap((group,gi)=>group.children.map((name,ci)=>existing.get(name)||{id:`configured-${gi}-${ci}`,name,code:`ZY${gi+1}${String(ci+1).padStart(2,'0')}`,icon:['▣','♨','⌃','⌁'][gi%4],status:'草稿',version:'V1',updated:'2026-09-02',category:group.name})).map((item)=>({...item,category:configured.find(g=>g.children.includes(item.name))?.name||item.category}));
+ }
+}catch(e){}
 let state={page:'center',category:'全部模板',keyword:'',template:null,mode:'form',selectedField:0,selectedNode:0,creation:null,selectedSource:null};
 const app=document.querySelector('#app'),title=document.querySelector('#pageTitle'),subtitle=document.querySelector('#pageSubtitle');
 const fieldSeed=['作业名称|单行文本|必填','作业申请单位|部门选择|必填','作业地点及部位|位置选择|必填','计划作业时间|日期时间|必填','作业负责人|成员选择|必填','作业内容|多行文本|必填','风险辨识与安全措施|子表单|必填','现场附件|图片上传|选填'];
