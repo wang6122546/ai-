@@ -50,3 +50,40 @@ header{height:42px;justify-content:flex-end;padding:0 18px}.header-actions{margi
 .config-scope-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:12px 0;padding:12px 14px;background:#f4f8ff;border:1px solid #dce7f5;border-radius:6px;color:#63748a}.config-scope-bar label{display:flex;align-items:center;gap:6px}.config-scope-bar select,.config-scope-bar input{padding:7px 10px;border:1px solid #cfdceb;border-radius:4px;background:#fff;color:#34465e}.config-scope-bar span{font-size:12px;color:#53709a}
 
 .work-type-setting.collapsed>.table-wrap{display:none}
+
+.gas-category-row td{background:#eaf2ff;color:#2459a6;font-weight:700;text-align:left!important}
+.gas-detection-page{padding:0 20px 28px;background:#f4f8fe;min-height:100%}.gas-detection-head{display:flex;justify-content:space-between;padding:14px 16px;background:#e7efff;color:#286af3}.gas-meta{display:grid;gap:14px;padding:18px 0}.gas-meta p{margin:0}.gas-meta label{display:flex;align-items:center;gap:8px}.gas-meta input,.gas-analysis-card input,.gas-analysis-card select{padding:9px;border:1px solid #d5dfed;border-radius:4px;background:#fff}.gas-meta button{width:max-content}.gas-analysis-card{width:min(520px,100%);display:grid;gap:12px;padding:16px;margin:10px 0;border:1px solid #d7e1ee;border-radius:6px;background:#f7faff}.gas-analysis-card>label{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:8px}.gas-analysis-card i,.gas-meta i{color:#e55353;font-style:normal}.gas-radio{display:flex;gap:18px}.gas-radio label{display:flex;align-items:center;gap:4px}.gas-photo,.gas-sign{display:flex;align-items:center;gap:16px;margin:18px 0}.gas-detection-footer{display:flex;justify-content:center;gap:10px;padding:24px}.gas-detection-page .signature-box{width:220px;height:70px;border:1px dashed #aabbd5;background:#fff;color:#6b88c4}
+
+.standard-line{display:flex;align-items:center;gap:8px}.standard-line select{flex:0 0 95px}.standard-line input{flex:1;min-width:0}
+#gasAnalysisList{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:14px;align-items:start}.gas-analysis-card{width:auto;margin:0;min-width:0}.gas-analysis-card>label{grid-template-columns:120px minmax(0,1fr);min-width:0}.gas-analysis-card input,.gas-analysis-card select{min-width:0;width:100%;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gas-radio{flex-wrap:wrap;white-space:nowrap}
+@media(max-width:1050px){#gasAnalysisList{grid-template-columns:minmax(0,1fr)}}
+/* 统一表单：标题与控件同行，减少右侧空白 */
+.form-grid>label,.case-create-form>label{display:grid;grid-template-columns:130px minmax(0,1fr);align-items:center;gap:10px;min-width:0}.form-grid>label.full,.case-create-form>label.full{grid-column:1/-1}.form-grid>label>input,.form-grid>label>select,.form-grid>label>textarea,.case-create-form>label>input,.case-create-form>label>select,.case-create-form>label>textarea{min-width:0;width:100%;box-sizing:border-box}.form-grid>label>textarea,.case-create-form>label>textarea{min-height:72px}.form-grid>label i,.case-create-form>label i{color:#e55353;font-style:normal}.form-grid .case-project-field{min-width:0}.form-grid .case-project-field input{width:100%}
+@media(max-width:900px){.form-grid>label,.case-create-form>label{grid-template-columns:1fr;gap:5px}.form-grid>label.full,.case-create-form>label.full{grid-column:auto}}
+
+/* PC 页面规范化：去除重复页头留白，统一标题、批量操作、上传和表单控件。 */
+.risk-assessment-page>.risk-page-head,.safety-grouped-page>.safety-confirm-head{display:none}
+.risk-assessment-page,.safety-grouped-page{padding-top:1px}
+.risk-page-section>header{justify-content:flex-start!important}
+.risk-page-section>header>button,.risk-page-section>header>.risk-section-actions{margin-left:auto}
+.safety-group-batch{min-width:104px;border-color:#b9c8dc;background:#fff;color:#40536d;box-shadow:none}
+.photo-upload-button{display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:6px;font-size:20px}
+.site-photo-field{grid-template-columns:110px 52px minmax(0,1fr)!important;align-items:center!important}
+.site-photo-field>small{grid-column:3!important}
+.site-photo-previews{grid-column:3!important}
+.case-create-page .case-create-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 28px}
+.case-create-page .case-create-form>label{display:flex;align-items:center;gap:8px;min-width:0;white-space:nowrap}.case-create-page .case-create-form>label>input,.case-create-page .case-create-form>label>select,.case-create-page .case-create-form>label>textarea,.case-create-page .case-create-form>label>.case-project-field{flex:1;margin-left:auto;min-width:260px}
+.case-create-page .case-create-form input,.case-create-page .case-create-form select,.case-create-page .case-create-form textarea,.limited-form input,.limited-form select,.limited-form textarea,.limited-form button{border-radius:6px!important}
+@media(max-width:900px){.site-photo-field{grid-template-columns:1fr!important}.site-photo-field>small,.site-photo-previews{grid-column:1!important}.case-create-page .case-create-form{grid-template-columns:1fr}.case-create-page .case-create-form>label{align-items:flex-start;flex-direction:column}.case-create-page .case-create-form>label>input,.case-create-page .case-create-form>label>select,.case-create-page .case-create-form>label>textarea,.case-create-page .case-create-form>label>.case-project-field{width:100%;min-width:0}}
+
+.safety-group-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.safety-group-actions button{margin:0}
+
+/* 作业类型树：一级节点控制二级节点的展开与收起。 */
+.work-type-setting .tree-toggle{width:24px;height:24px;margin-right:8px;border:0;border-radius:4px;background:#e8f1ff;color:#246bfd;cursor:pointer}
+.work-type-setting .work-type-parent{cursor:pointer}
+.work-type-setting .work-type-parent:hover{background:#edf4ff}
+.work-type-setting .work-type-child{background:#fff}
+.work-type-setting .work-type-child td:first-child{padding-left:26px;color:#8290a4}
+.work-type-setting .work-type-child td:nth-child(2){position:relative;padding-left:34px}
+.work-type-setting .work-type-child td:nth-child(2):before{content:"";position:absolute;left:14px;top:0;width:12px;height:50%;border-left:1px solid #b9c8dd;border-bottom:1px solid #b9c8dd}
+@media(max-width:900px){.safety-risk-group>header{align-items:flex-start;flex-direction:column;gap:10px}.safety-group-actions{width:100%}}
