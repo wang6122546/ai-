@@ -60,3 +60,6 @@ header{height:42px;justify-content:flex-end;padding:0 18px}.header-actions{margi
 /* 统一表单：标题与控件同行，减少右侧空白 */
 .form-grid>label,.case-create-form>label{display:grid;grid-template-columns:130px minmax(0,1fr);align-items:center;gap:10px;min-width:0}.form-grid>label.full,.case-create-form>label.full{grid-column:1/-1}.form-grid>label>input,.form-grid>label>select,.form-grid>label>textarea,.case-create-form>label>input,.case-create-form>label>select,.case-create-form>label>textarea{min-width:0;width:100%;box-sizing:border-box}.form-grid>label>textarea,.case-create-form>label>textarea{min-height:72px}.form-grid>label i,.case-create-form>label i{color:#e55353;font-style:normal}.form-grid .case-project-field{min-width:0}.form-grid .case-project-field input{width:100%}
 @media(max-width:900px){.form-grid>label,.case-create-form>label{grid-template-columns:1fr;gap:5px}.form-grid>label.full,.case-create-form>label.full{grid-column:auto}}
+
+.safety-group-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.safety-group-actions button{margin:0}
+@media(max-width:900px){.safety-risk-group>header{align-items:flex-start;flex-direction:column;gap:10px}.safety-group-actions{width:100%}}
