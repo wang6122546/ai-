@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安全作业管理 - 参数配置</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <div class="workspace">
+      <div class="page-head">
+        <h1>参数配置</h1>
+      </div>
+
+      <section class="config-shell">
+        <aside class="org-tree">
+          <h2>所属单位</h2>
+          <input id="orgSearch" placeholder="输入组织名称">
+          <div id="orgList">
+            <button class="selected">▾ 鞍钢集团矿业有限公司</button>
+            <button>▪ 东鞍山烧结厂</button><button>▪ 齐大山选矿厂</button>
+            <button>▪ 弓长岭有限公司</button><button>▪ 大孤山球团厂</button>
+            <button>▪ 齐大山分公司</button><button>▪ 关宝山矿业有限公司</button>
+          </div>
+        </aside>
+        <div class="config-main">
+          <div class="config-nav" role="tablist">
+            <button class="active" data-page="overview">综合配置</button>
+            <button data-page="types">作业类型配置</button>
+            <button data-page="risk">风险内容配置</button>
+            <button data-page="briefing">安全交底配置</button>
+            <button data-page="finish">结束确认标准</button>
+            <button data-page="plan">作业计划规则</button>
+            <button data-page="case">一件一案规则</button>
+            <button data-page="cross">交叉作业规则</button>
+          </div>
+          <div class="config-content" id="content"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="drawer-layer" id="drawerLayer" hidden>
+    <button class="drawer-mask" data-close aria-label="关闭"></button>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header><div><small>作业类型配置</small><h2 id="drawerTitle">编辑作业类型</h2></div><button data-close aria-label="关闭">×</button></header>
+      <div class="drawer-body" id="drawerBody"></div>
+      <footer><button class="button secondary" data-close>取消</button><button class="button primary" id="drawerSave">保存</button></footer>
+    </aside>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
