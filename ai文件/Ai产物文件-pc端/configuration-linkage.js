@@ -1,3 +1,4 @@
+const briefingSteps=[{stage:'作业前',content:'检查作业人员资质、安全防护设备、个体防护用品、应急救援装备及作业工器具，确定双方监护人员。'},{stage:'作业前',content:'封闭作业区域，在进出口周边设置安全警示标志，对设备、物料和能源介质采取可靠隔离并上锁挂牌。'},{stage:'作业前',content:'对有限空间进行清洗、物料清空、气体置换和通风，作业人员在外部上风侧进行气体检测。'},{stage:'作业中',content:'作业人员在入口处完成进入登记后进入，合理安排作业时间并采取人员轮换。'},{stage:'作业中',content:'作业过程中保持持续通风和气体检测，作业单位、属地单位监护人员全程在岗。'},{stage:'作业后',content:'将全部设备和工具带离有限空间，清点人员和设备，确认无遗留后关闭进出口。'},{stage:'作业后',content:'恢复现场环境，经验收后解除隔离和封闭措施，安全撤离作业现场。'}];
 let linkageBriefingType='';
 let linkageBriefingLevel='全部';
 let linkageFinishType='';
