@@ -1,0 +1,17 @@
+const assert = require('node:assert/strict');
+const model = require('../template-type-model.js');
+assert.equal(model.DEFAULT_TEMPLATE_TYPE, 'WORK_PERMIT');
+assert.deepEqual(model.TEMPLATE_TYPE_OPTIONS.map(x => x.value), ['WORK_PERMIT', 'ONE_CASE', 'WORK_PLAN', 'ADMIN_LICENSE']);
+const historical = model.normalizeTemplateRecord({ id: 'hot', name: '动火作业', category: '危险作业' });
+assert.equal(historical.templateType, 'WORK_PERMIT');
+assert.equal(historical.workTypeId, 'HOT_WORK');
+const response = model.templateMockService.query({}, [historical, { id: 'future', name: '未来模板', templateType: 'ONE_CASE' }]);
+assert.equal(response.templateType, 'WORK_PERMIT');
+assert.deepEqual(response.items.map(x => x.id), ['hot']);
+assert.equal(model.templateMockService.copy(historical, { id: 'copy' }).templateType, 'WORK_PERMIT');
+assert.equal(model.templateMockService.import({ name: '导入模板', workTypeId: 'TYPE_1' }).templateType, 'WORK_PERMIT');
+assert.equal(model.validateTemplateRecord({ templateType: 'WORK_PERMIT', workTypeId: '' }).valid, false);
+assert.equal(model.validateTemplateRecord({ templateType: 'ONE_CASE', workTypeId: '' }).valid, true);
+assert.throws(() => model.templateMockService.createUnique({ name: '动火作业', workTypeId: 'HOT_WORK' }, [historical]), /已创建/);
+assert.equal(model.templateMockService.createUnique({ name: '新作业', workTypeId: 'NEW_WORK' }, [historical]).status, undefined);
+console.log('template-type-model tests passed');

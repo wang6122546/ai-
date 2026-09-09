@@ -1,0 +1,57 @@
+.interactive-workspace .stage-toolbar {
+  justify-content: space-between;
+}
+
+.interactive-workspace .stage-toolbar > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #44546a;
+  font-weight: 600;
+}
+
+.interactive-workspace .stage-toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interactive-canvas .control-item {
+  position: relative;
+  cursor: grab;
+  transition: opacity .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.interactive-canvas .control-item:active {
+  cursor: grabbing;
+}
+
+.interactive-canvas .control-item.dragging {
+  opacity: .42;
+  transform: scale(.99);
+}
+
+.interactive-canvas .control-item.drag-before::before,
+.interactive-canvas .control-item.drag-after::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: #2f74f3;
+  box-shadow: 0 0 0 3px #dce9ff;
+}
+
+.interactive-canvas .control-item.drag-before::before {
+  top: -7px;
+}
+
+.interactive-canvas .control-item.drag-after::after {
+  bottom: -7px;
+}
+
+.interactive-canvas.canvas-drag-end {
+  box-shadow: inset 0 -3px #2f74f3;
+}

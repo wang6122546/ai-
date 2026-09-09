@@ -1,0 +1,24 @@
+.simple-picker-dialog { width: min(800px, 92vw); padding: 0; }
+.simple-picker-dialog .picker-heading { min-height: 60px; padding: 12px 24px; background: #f3f6fa; }
+.simple-picker-selected { min-height: 90px; margin: 12px; padding: 10px; border: 1px dashed #d6dde7; border-radius: 7px; }
+.simple-picker-selected > span { display: inline-flex; align-items: center; gap: 5px; margin: 3px; padding: 4px 8px; border: 1px solid #d7e0eb; border-radius: 5px; background: #fff; }
+.simple-picker-selected > span button { border: 0; background: transparent; color: #8a96a6; }
+.simple-picker-selected small { color: #9aa5b3; }
+.simple-picker-main { margin: 0 12px 12px; border: 1px solid #d8e0ea; border-radius: 7px; overflow: hidden; }
+.simple-picker-main .picker-tabs { align-items: center; padding: 0 10px; border-bottom: 1px solid #d8e0ea; }
+.simple-picker-main .picker-tabs button { min-width: auto; padding: 12px 10px; border: 0; border-bottom: 2px solid transparent; }
+.simple-picker-main .picker-tabs button.active { border-bottom-color: #3182f6; background: #fff; color: #1671e8; }
+.simple-picker-main .picker-search { width: 215px; margin: 7px 0 7px auto; border-radius: 8px; }
+.simple-picker-content { display: grid; grid-template-columns: 1fr 1fr; min-height: 310px; }
+.simple-picker-content aside { padding: 10px 14px; border-right: 1px solid #d8e0ea; background: #f7f8fa; }
+.simple-picker-list { max-height: 310px; overflow: auto; }
+.simple-picker-list label { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 7px 12px; cursor: pointer; }
+.simple-picker-list label:hover, .simple-picker-list label.selected { background: #eef5ff; }
+.simple-picker-list label > span { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.simple-picker-list label small { color: #8a96a6; }
+.simple-picker-list input { width: 16px; height: 16px; accent-color: #3182f6; }
+
+@media (max-width: 700px) {
+  .simple-picker-content { grid-template-columns: 130px 1fr; }
+  .simple-picker-main .picker-tabs { overflow-x: auto; }
+}
