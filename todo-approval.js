@@ -18,7 +18,7 @@
       if(!signature.dataset.signed)return toast('请完成签字');
       approvalProgress[key]=done+1;
       if(approvalProgress[key]<stepNames.length){toast('当前审批意见已提交');renderTodoApproval(row);return}
-      updateTodoFlowStage(row,'site');todoState='site';openView('todo',document.querySelector('[data-view="todo"]'));toast('审批完成，进入现场实施');
+      updateTodoFlowStage(row,'supervision');todoState='site';openView('todo',document.querySelector('[data-view="todo"]'));toast('审批完成，请办理监管确认');
     };
   }
 
