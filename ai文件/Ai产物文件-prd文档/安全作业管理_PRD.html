@@ -24,7 +24,7 @@
 <body>
   <aside class="rail">
     <button class="rail-close" id="railClose" aria-label="关闭目录">×</button>
-    <div class="brand"><span class="brand-mark">安</span><span><b>安全作业管理 PRD</b><small>方案原型 · V1.0.01</small></span></div>
+    <div class="brand"><span class="brand-mark">安</span><span><b>安全作业管理 PRD</b><small>方案原型 · V1.0.10</small></span></div>
     <div class="nav-title">DOCUMENT</div>
     <nav id="nav">
       <a href="#overview"><span class="num">00</span>文档概览</a><a href="#background"><span class="num">01</span>背景与目标</a><a href="#scope"><span class="num">02</span>范围与角色</a><a href="#flow"><span class="num">03</span>核心业务流程</a><a href="#web"><span class="num">04</span>Web 端需求</a><a href="#plan-template"><span class="num">4A</span>计划与自定义模板</a><a href="#app"><span class="num">05</span>App 端需求</a><a href="#screens"><span class="num">5A</span>页面图谱与规则</a><a href="#rules"><span class="num">06</span>业务规则</a><a href="#data"><span class="num">07</span>数据与接口</a><a href="#nonfunctional"><span class="num">08</span>非功能需求</a><a href="#acceptance"><span class="num">09</span>验收与计划</a><a href="#risk"><span class="num">10</span>风险与待确认</a>
@@ -59,11 +59,17 @@
     </section>
 
     <section class="section" id="flow"><div class="section-head"><span class="chapter">03</span><div><h2>核心业务流程</h2><p class="lead">所有作业类型共用主状态机，差异通过模板、等级规则和审批流配置承载。</p></div></div>
-      <h3>作业计划、一件一案与作业管理</h3><div class="grid3"><div class="card"><h4>作业计划</h4><p>用于事前安排作业时间、地点、类型、风险、人数和设备。有计划时可关联并带入申请信息，无计划时也可直接申请作业票。</p></div><div class="card"><h4>一件一案</h4><p>作为专项方案及审批附件关联作业管理，不控制作业票创建；既可从一件一案创建作业票并带入信息，也可在独立开票后关联附件。</p></div><div class="card"><h4>作业管理</h4><p>以作业票为核心，承接申请、风险评估、安全措施、交底、审批、现场实施、验收及完成状态闭环。</p></div></div>
+      <h3>作业计划、一件一案与作业管理</h3><div class="grid3"><div class="card"><h4>作业计划</h4><p>用于事前安排作业时间、地点、类型、风险、人数和设备。有计划时可关联并带入申请信息，无计划时也可直接申请作业票。</p></div><div class="card"><h4>一件一案</h4><p>作为面向单项作业的综合管控计划关联作业管理，维护作业范围、危险类别、风险等级、人员、监控和审批关系，不承载具体施工方案及作业步骤；既可从一件一案创建作业票并带入信息，也可在独立开票后建立关联。</p></div><div class="card"><h4>作业管理</h4><p>以作业票为核心，承接申请、风险评估、安全措施、交底、审批、现场实施、验收及完成状态闭环。</p></div></div>
       <p class="note"><b>一件一案范围：</b>关联动火、有限空间、盲板抽堵、断路、吊装、高处、临时用电、动土、交叉、支护、探放水、空区治理、危大工程13类；涉及一件一案时，人员变更办理变更审批，作业中监管和作业收尾同步留痕。</p>
+      <p class="note"><b>一件一案审批意见：</b>审批结论为“同意”时，意见说明可选填；审批结论为“驳回”时，意见说明必须填写，驳回后结束当前审批流程并记录原因。</p>
+      <p class="note"><b>节点责任确认：</b>一件一案五类作业前审批节点分别展示对应的责任声明，操作人必须确认当前节点声明并完成电子签字后方可提交；声明文字、审批结论、意见及签名共同写入审批记录和审批表。</p>
+      <p class="note"><b>一件一案审批表：</b>列表操作支持复制新增、删除和查看审批表；审批表自动带入当前一件一案信息，并同步展示各审批账户的审批意见、电子签字和审批时间，支持打印形成线下审批资料。</p>
+      <table><thead><tr><th>综合风险等级</th><th>判定口径</th><th>审批要求</th><th>监管要求</th></tr></thead><tbody><tr><td>A级</td><td>同一项目3种及以上危险作业且同一区域人员达到10人及以上；或3家及以上单位交叉作业且人员超10人；或涉及超过一定规模的危大工程。</td><td>厂矿主要负责人或业务分管副职，岗位级别不低于D级。</td><td>分管部门、作业区C级及以上人员全过程监管，厂矿领导现场动态督导。</td></tr><tr><td>B级</td><td>同一项目3种及以上危险作业且同一区域人员未超过10人，或涉及2种危险作业；或涉及需要厂矿领导审批的危险作业；或2家单位交叉作业；或涉及爆破、支护、空区治理、探放水作业；或涉及危险性较大的危大工程。</td><td>厂矿业务部门负责人或业务部门分管副职及以上，岗位级别不低于C级。</td><td>分管部门、作业区B级及以上人员动态监管，厂矿业务部门项目负责人现场动态督导。</td></tr><tr><td>C级</td><td>仅涉及1种不需要厂矿领导审批的危险作业。</td><td>作业区或业务部门分管副职及以上，岗位级别不低于B级。</td><td>作业区指定人员动态监管。</td></tr></tbody></table>
       <h3>作业管理全流程泳道图</h3>
       <div class="flowchart-frame"><iframe src="PRD素材/作业管理全流程泳道图.html" title="作业管理全流程泳道图" loading="lazy"></iframe><div class="flowchart-actions"><a href="PRD素材/作业管理全流程泳道图.html" target="_blank" rel="noopener noreferrer">新窗口查看完整流程图 ↗</a></div></div>
       <div class="flow"><div class="step"><b>0 前置关联</b><small>计划/一件一案</small></div><div class="step"><b>1 申请</b><small>填报作业信息</small></div><div class="step"><b>2 风险评估</b><small>非常规作业</small></div><div class="step"><b>3 措施确认</b><small>检测/措施</small></div><div class="step"><b>4 安全交底</b><small>交底人签字</small></div><div class="step"><b>5 接收交底</b><small>多人确认</small></div><div class="step"><b>6 作业审批</b><small>审批人均通过</small></div><div class="step"><b>7 现场实施</b><small>监护/一案监管</small></div><div class="step"><b>8 提交验收</b><small>完工/一案收尾</small></div><div class="step"><b>9 验收审批</b><small>通过后完成</small></div></div>
+      <p class="note"><b>作业收尾确认：</b>提交验收时逐项确认安全设施恢复、验收手续办理和现场清理，结论为“是/否/不涉及”；施工单位作业负责人和业主单位作业活动发起人均完成签字后方可提交，同时保留实际开始与完工时间、作业视频记录和完工图片。</p>
+      <p class="note"><b>安全措施现场留痕：</b>每项已落实的安全措施可上传 JPG、PNG 格式现场照片，单项最多 3 张。安全措施确认提交后返回我的待办，系统生成独立的安全交底待办，不直接跳转到下一办理页面。</p>
       <h3>统一状态机</h3><table><thead><tr><th>业务状态</th><th>进入条件</th><th>允许动作</th><th>退出条件</th></tr></thead><tbody><tr><td>草稿</td><td>创建作业票</td><td>编辑、删除、复制新增、提交</td><td>校验通过并提交</td></tr><tr><td>申请中</td><td>已提交，流程未完成</td><td>审批、退回、驳回、撤回</td><td>审批完成或作废</td></tr><tr><td>待开工</td><td>审批通过</td><td>交底、签到、措施复核、开工</td><td>开工条件全部满足</td></tr><tr><td>作业中</td><td>负责人确认开工</td><td>监护记录、隐患上报、暂停/恢复、申请验收</td><td>验收通过或强制终止</td></tr><tr><td>已完成</td><td>完工验收通过</td><td>查看、导出、追溯</td><td>归档锁定</td></tr><tr><td>作废</td><td>驳回、撤销、超期或终止</td><td>查看原因、复制重提</td><td>终态</td></tr></tbody></table>
       <p class="note danger"><b>硬控制：</b>审批未通过、交底未全员确认、特种人员资质失效、关键措施未落实、气体检测不合格，或视频未绑定、未在线、未形成有效覆盖时，不允许开工；作业中视频断联或覆盖失效立即暂停。</p>
       <h3>典型场景：受限空间作业智能监护</h3>
@@ -92,11 +98,13 @@
       <h3>作业类型体系</h3><div class="type-list"><span>常规作业</span><span>有限空间</span><span>高处</span><span>吊装</span><span>临时用电</span><span>动土</span><span>断路</span><span>动火</span><span>盲板抽堵</span><span>探放水</span><span>空区治理</span><span>顶板支护</span><span>爆破</span><span>基坑</span><span>模板及支撑</span><span>起重机械安拆</span><span>脚手架</span><span>拆除工程</span><span>交叉作业</span></div>
       <h3>参数配置联动规则</h3><div class="grid2"><div class="card"><h4>作业类型与等级</h4><p>作业类型最多维护两级节点：一级节点作为作业管理菜单及模板中心横向分类，二级节点作为具体作业类型和模板卡片。作业等级必须归属于二级作业类型；相同作业类型的等级在列表中合并展示。</p></div><div class="card"><h4>风险点与适用规则</h4><p>风险点适用等级支持多选，选项仅来自当前作业类型已配置的等级。等级管控规则在“作业类型配置”维护；风险点触发规则在“风险内容配置 / 风险点详情 / 适用规则”维护，申请端合并两类规则后执行。</p></div></div>
       <p class="note"><b>配置生效：</b>作业类型发布后同步更新作业管理菜单和自定义作业模板分类；配置需版本化，已发起作业继续引用发起时的配置快照。</p>
+      <p class="note"><b>作业票打印：</b>作业管理中的每条作业记录均可打开作业票打印页。系统按具体作业类型匹配附件2中的18类正式模板，自动回填申请信息、审批记录和电子签名；作业步骤独立展示，不与风险措施强制关联，主要安全风险必须与安全防范措施对应展示且不设置责任人列；未匹配正式模板时不得套用其他作业类型模板，应明确提示模板待配置。</p>
       <h3>作业详情信息架构</h3><div class="grid2"><div class="card"><h4>业务页签</h4><p><span class="tag">基本信息</span><span class="tag">相关人员</span><span class="tag">作业初审</span><span class="tag">风险评估</span><span class="tag">安全措施</span><span class="tag">安全交底</span><span class="tag">作业审批</span><span class="tag">完工验收</span></p></div><div class="card"><h4>监管页签</h4><p><span class="tag orange">监测记录</span><span class="tag red">隐患清单</span><span class="tag blue">操作日志</span><span class="tag">关联票证</span><span class="tag">附件</span><span class="tag">监护报告</span></p></div></div>
       <div class="shots"><figure class="shot"><img src="原型梳理/screenshots/desktop/01-安全作业一张图.jpg" alt="安全作业一张图"><figcaption>参考原型：安全作业一张图</figcaption></figure><figure class="shot"><img src="原型梳理/screenshots/desktop/05-作业详情.jpg" alt="作业详情"><figcaption>参考原型：作业全过程详情</figcaption></figure></div>
     </section>
 
     <section class="section" id="plan-template"><div class="section-head"><span class="chapter">4A</span><div><h2>作业计划与自定义作业模板</h2><p class="lead">先计划、后开票；模板同时定义业务表格、审批数据和提交规则。</p></div></div>
+      <p class="note"><b>通用控件规则：</b>作业模板中所有控件库入口共用同一套组件定义、组件属性、组件样式和表单属性；不为单个作业类型维护独立控件库。已有作业模板保存组件实例及其配置，从模板卡片进入设计时直接加载使用；新建模板与既有模板使用相同的控件目录和属性面板。</p>
       <h3>Web 端菜单结构</h3>
       <div class="grid3"><div class="card"><h4>作业计划</h4><p>计划列表、计划详情、新建/编辑、提交审批、发布、取消、复制和关联作业票。</p></div><div class="card"><h4>自定义作业模板</h4><p>父级菜单，仅承载模板设计相关能力，不直接进入业务页面。</p></div><div class="card"><h4>二级菜单</h4><p><span class="tag blue">审批流表格</span><span class="tag blue">自定义表格</span><br>两个菜单统一归入“自定义作业模板”下。</p></div></div>
       <p class="note"><b>导航规则：</b>“作业计划”作为作业管理的独立业务菜单；“审批流表格”和“自定义表格”不得继续以一级菜单出现。父菜单展开后保持当前子菜单高亮，刷新页面后按路由恢复展开状态。</p>

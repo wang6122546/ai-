@@ -1,0 +1,21 @@
+.work-control-workspace .control-designer-palette { overflow: auto; }
+.work-palette-search { width: calc(100% - 24px); margin: 0 12px 12px; padding: 9px; border: 1px solid var(--line); border-radius: 6px; }
+.work-control-palette-group { padding: 0 12px 10px; }
+.work-control-palette-group > b { display: block; margin: 8px 0; color: #536277; }
+.work-control-palette-group button { width: 100%; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; padding: 8px; border: 1px solid #dfe6ef; border-radius: 6px; background: #fff; text-align: left; }
+.work-control-palette-group button:hover { border-color: #76a0f8; background: #f5f8ff; color: #2868f0; }
+.work-control-palette-group button i { width: 24px; color: #2868f0; font-style: normal; }
+.work-control-block { margin-bottom: 11px; border: 1px solid #dce5f1; border-radius: 8px; background: #fff; overflow: hidden; }
+.work-control-block.selected { outline: 2px solid #4d86f7; }
+.work-control-block > header { height: auto; display: flex; justify-content: space-between; padding: 9px 11px; background: #f7f9fc; }
+.work-control-block > header span { margin-left: 8px; color: #8491a2; font-size: 12px; }
+.work-control-block > header button { border: 0; background: transparent; color: #607086; }
+.work-control-block > header button:last-child { color: #e55353; }
+.work-control-display { display: grid; grid-template-columns: 140px minmax(0, 1fr); align-items: center; gap: 10px; padding: 12px; }
+.work-control-display > label { color: #536277; }
+.work-control-display > label i { margin-right: 3px; color: #e55353; font-style: normal; }
+.work-control-display input:not([type=radio]):not([type=checkbox]), .work-control-display select, .work-control-display textarea { width: 100%; padding: 9px; border: 1px solid #d6e0ec; border-radius: 5px; background: #fff; }
+.work-picker-preview, .work-upload-preview { height: 36px; display: flex; align-items: center; border: 1px solid #d6e0ec; border-radius: 5px; overflow: hidden; }
+.work-picker-preview span, .work-upload-preview span { flex: 1; padding: 0 9px; color: #929eae; }
+.work-picker-preview button, .work-upload-preview button { align-self: stretch; border: 0; background: #2868f0; color: #fff; }
+.work-choice-preview { display: flex; gap: 18px; }

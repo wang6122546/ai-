@@ -1,0 +1,150 @@
+.acceptance-tail-page {
+  display: grid;
+  gap: 16px;
+  padding: 0 24px 28px;
+  background: #f2f7ff;
+  min-height: calc(100vh - 110px);
+}
+
+.acceptance-tail-head,
+.acceptance-time-section,
+.acceptance-confirm-section,
+.acceptance-evidence-section,
+.acceptance-sign-section,
+.acceptance-tail-footer {
+  border: 1px solid #d9e4f2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.acceptance-tail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  color: #2165dc;
+}
+
+.acceptance-tail-head h2,
+.acceptance-confirm-section h3,
+.acceptance-evidence-section h3,
+.acceptance-sign-section h3 {
+  margin: 0;
+}
+
+.acceptance-time-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 18px 20px;
+}
+
+.acceptance-time-section label,
+.acceptance-evidence-section label,
+.acceptance-sign-section label {
+  display: grid;
+  gap: 9px;
+}
+
+.acceptance-time-section input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.acceptance-confirm-section > header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 20px;
+  background: #edf4ff;
+}
+
+.acceptance-confirm-section > header p {
+  margin: 0;
+  color: #75849a;
+}
+
+.acceptance-confirm-table {
+  margin: 18px 20px 20px;
+  border-top: 1px solid #9cabc0;
+  border-left: 1px solid #9cabc0;
+}
+
+.acceptance-confirm-heading,
+.acceptance-confirm-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.acceptance-confirm-heading > *,
+.acceptance-confirm-row > * {
+  padding: 14px 16px;
+  border-right: 1px solid #9cabc0;
+  border-bottom: 1px solid #9cabc0;
+}
+
+.acceptance-confirm-heading {
+  text-align: center;
+  background: #edf3fb;
+}
+
+.acceptance-confirm-row p {
+  margin: 7px 0 0;
+  line-height: 1.7;
+  color: #42526a;
+}
+
+.acceptance-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.acceptance-result label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.acceptance-evidence-section,
+.acceptance-sign-section {
+  padding: 18px 20px;
+}
+
+.acceptance-evidence-section > div,
+.acceptance-sign-section > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.acceptance-evidence-section button {
+  width: max-content;
+}
+
+.acceptance-sign-section .signature-box {
+  width: 100%;
+  min-height: 72px;
+}
+
+.acceptance-tail-footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 -7px 20px #273b5b12;
+}
+
+@media (max-width: 900px) {
+  .acceptance-time-section,
+  .acceptance-evidence-section > div,
+  .acceptance-sign-section > div,
+  .acceptance-confirm-heading,
+  .acceptance-confirm-row {
+    grid-template-columns: 1fr;
+  }
+}
