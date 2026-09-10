@@ -17,6 +17,16 @@
   <link rel="stylesheet" href="job-group-empty.css?v=20260902-1" />
   <link rel="stylesheet" href="configuration-linkage.css?v=20260907-1" />
   <link rel="stylesheet" href="job-detail-enhancement.css?v=20260903-4" />
+  <link rel="stylesheet" href="system-config.css?v=20260909-1" />
+  <link rel="stylesheet" href="todo-approval.css?v=20260909-1" />
+  <link rel="stylesheet" href="one-case-form-v2.css?v=20260910-1" />
+  <link rel="stylesheet" href="one-case-title-align.css?v=20260910-1" />
+  <link rel="stylesheet" href="todo-one-case.css?v=20260910-1" />
+  <link rel="stylesheet" href="one-case-confirmation.css?v=20260910-1" />
+  <link rel="stylesheet" href="one-case-actions.css?v=20260910-1" />
+  <link rel="stylesheet" href="job-ticket-templates.css?v=20260910-1" />
+  <link rel="stylesheet" href="gas-analysis-compact.css?v=20260910-1" />
+  <link rel="stylesheet" href="acceptance-tail.css?v=20260910-1" />
 </head>
 <body>
   <aside class="sidebar">
@@ -39,11 +49,18 @@
       <div class="nav-group"><button type="button"><span>◇</span>自定义作业模板<b>⌃</b></button>
         <div class="subnav">
           <a href="#" data-view="templatecenter"><span>•</span>作业模板中心</a>
+          <a href="#" data-view="templatecontrols"><span>•</span>作业控件库</a>
           <a href="#" data-view="templatedrafts"><span>•</span>设计草稿</a>
           <a href="#" data-view="templateversions"><span>•</span>发布记录</a>
         </div>
       </div>
-      <a href="#" data-view="config"><span>⚙</span>参数配置</a>
+      <div class="nav-group system-config-nav-group"><button type="button"><span>⚙</span>系统参数配置<b>⌃</b></button>
+        <div class="subnav">
+          <a href="#/system-config/work-management" data-view="config" data-system-route="work-management"><span>•</span>作业管理配置</a>
+          <a href="#/system-config/one-case" data-view="config" data-system-route="one-case"><span>•</span>一件一案配置</a>
+          <a href="#/system-config/work-plan" data-view="config" data-system-route="work-plan"><span>•</span>作业计划配置</a>
+        </div>
+      </div>
     </nav>
     <div class="side-help"><b>安全值守中心</b><span>7×24小时风险响应</span><button>联系值守人员</button></div>
   </aside>
@@ -75,13 +92,24 @@
 
   <div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="eyebrow">作业详情</span><h2 id="modalTitle">作业信息</h2><div id="modalBody"></div><div class="modal-actions"><button class="ghost" id="cancelModal">关闭</button><button class="primary">查看审批单</button></div></div></div>
   <div class="toast" id="toast">原型提示：新建作业流程将在下一页面接入</div>
-  <script src="app.js?v=20260907-1"></script>
+  <script src="app.js?v=20260910-2"></script>
   <script src="regular.js?v=20260901-1"></script>
   <script src="approval-engine.js?v=20260829"></script>
   <script src="job-wizard.js?v=20260901-2"></script>
+  <script src="plan-enhancement.js?v=20260909-1"></script>
   <script src="cross-wizard.js?v=20260829"></script>
   <script src="gis-map.js?v=20260829"></script>
   <script src="configuration-linkage.js?v=20260907-1"></script>
   <script src="job-detail-enhancement.js?v=20260907-4"></script>
+  <script src="config-enhancement.js?v=20260907-1"></script>
+  <script src="config-level-enhancement.js?v=20260907-1"></script>
+  <script src="config-list-enhancement.js?v=20260907-1"></script>
+  <script src="todo-workflow-enhancement.js?v=20260908-3"></script>
+  <script src="system-config.js?v=20260909-1"></script>
+  <script src="todo-approval.js?v=20260909-1"></script>
+  <script src="one-case-form-v2.js?v=20260910-1"></script>
+  <script src="todo-one-case.js?v=20260910-1"></script>
+  <script src="one-case-actions.js?v=20260910-1"></script>
+  <script src="job-ticket-templates.js?v=20260910-1"></script>
 </body>
 </html>

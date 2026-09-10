@@ -1,1 +1,3 @@
 .config-type-scroll,.risk-config>.risk-type-tabs{display:flex;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}.config-type-scroll button,.risk-config>.risk-type-tabs button{flex:0 0 auto;min-width:120px;white-space:nowrap}.single-work-list .panel-top>div:first-child{display:grid;gap:4px}.single-work-list .panel-top small{color:#8a97aa}.work-type-setting td:last-child{white-space:nowrap}
+.config-main .config-scope-bar{display:none}
+.bound-level-checks{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;padding:6px 0}.bound-level-checks label{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;padding:5px 9px;background:#f5f8fd;border-radius:4px}.bound-level-checks input{width:14px;height:14px}

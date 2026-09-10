@@ -1,0 +1,16 @@
+/* 一件一案填报页：模块标题统一从标题栏左上侧开始排列。 */
+.case-form-v2 .case-v2-section > header {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+.case-form-v2 .case-v2-section > header > b,
+.case-form-v2 .case-v2-section > header > span {
+  margin-left: 0 !important;
+  margin-right: 0;
+  text-align: left !important;
+}
+
+.case-form-v2 .case-v2-section > header > button {
+  margin-left: auto !important;
+}
