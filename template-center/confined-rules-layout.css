@@ -1,0 +1,16 @@
+.component-rule-block { margin-top: 18px; padding-top: 14px; border-top: 1px solid #e4eaf2; }
+.component-rule-block > b { display: block; margin-bottom: 3px; }
+.component-rule-block > p, .component-rule-block small { display: block; margin: 0 0 10px; color: #8491a2; font-size: 11px; }
+.rule-badge-inline { position: absolute; right: 7px; bottom: 4px; padding: 2px 6px; border-radius: 9px; background: #fff3df; color: #b66a13; font-size: 10px; }
+.layout-empty { grid-column: 1 / -1; padding: 22px; border: 1px dashed #ccd7e5; border-radius: 6px; color: #94a0b0; text-align: center; }
+.layout-collapse > header { gap: 8px; background: #fff; color: #25364b; }
+.layout-collapse-toggle { margin-left: auto; border: 0 !important; background: transparent !important; color: #334155 !important; font-size: 18px !important; }
+.layout-hidden { display: none; }
+.layout-tabs > header { padding: 0 12px; background: #fff; }
+.layout-tab-list { display: flex; align-self: stretch; gap: 18px; }
+.layout-tab-list button { padding: 13px 2px 10px; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; background: transparent !important; color: #475569 !important; }
+.layout-tab-list button.active { border-bottom-color: #2868f0 !important; color: #2868f0 !important; }
+.layout-grid { border-style: dashed; }
+.layout-grid > header { background: #fafbfc; color: #64748b; }
+.layout-grid > header span { margin-left: auto; font-size: 11px; }
+.layout-grid .confined-field { grid-column: auto !important; }

@@ -1,0 +1,40 @@
+.gas-analysis-card > label {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.gas-analysis-card > label > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: #344054;
+}
+
+.gas-analysis-card > label > input,
+.gas-analysis-card > label > select,
+.gas-analysis-card > label > .gas-radio {
+  grid-column: 2;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.gas-analysis-card > label > .gas-radio {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.gas-analysis-card > label > .gas-radio label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gas-analysis-card > label > .gas-radio input {
+  width: auto;
+}

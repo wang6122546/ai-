@@ -8,13 +8,7 @@ let canvasControls = [
   {type:'创建时间',name:'创建时间',group:'system',required:false,placeholder:'系统自动生成',width:'半行',readonly:true}
 ];
 let activeControl = 0;
-const controlGroups = [
-  ['基础控件','basic',['单行输入','多行输入','数字输入','开关','单选框组','多选框组','下拉选择','级联选择','日期选择','时间选择','文件上传','图片上传']],
-  ['高级控件','advanced',['组织选择','岗位选择','用户选择','角色选择','设计子表','手写签名','定位']],
-  ['作业控件','work',['关联作业计划','作业区域','风险辨识','安全措施','作业人员','监护人员','气体检测','设备设施','安全交底','现场验票','资质校验','作业冲突检测']],
-  ['系统控件','system',['创建人员','创建时间','修改人员','修改时间','所属组织','所属岗位','当前用户','流水号','流程状态','审批意见']],
-  ['布局控件','layout',['分组标题','折叠面板','标签面板','栅格容器']]
-];
+const controlGroups = window.formControlCatalog.map(group => [group.label, group.key, group.controls.map(control => control.name)]);
 
 function controlLibrary(){return controlGroups.map(g=>`<div class="control-group"><button class="group-toggle" data-group-toggle="${g[1]}"><b>${g[0]}</b><span>⌃</span></button><div class="control-grid" data-group-body="${g[1]}">${g[2].map(x=>`<button draggable="true" data-build-control="${x}" data-control-group="${g[1]}">＋ ${x}</button>`).join('')}</div></div>`).join('')}
 function controlPreview(c){if(c.group==='layout')return c.type==='分割线'?`<div class="layout-divider"><span>${c.name}</span></div>`:`<div class="layout-control"><b>${c.name}</b><small>${c.type}</small></div>`;const value=c.readonly?'系统自动生成':c.placeholder;return `<label class="canvas-field-label"><span>${c.required?'<i>*</i>':''}${c.name}</span><div class="fake-input ${c.readonly?'readonly':''}">${value||'请输入'}</div></label>`}

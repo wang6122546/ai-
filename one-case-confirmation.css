@@ -1,0 +1,27 @@
+.case-approval-form > label.case-node-confirm {
+  align-items: center;
+}
+
+.case-node-confirm > span {
+  padding-top: 0 !important;
+}
+
+.case-node-confirm > label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid #d7e2f0;
+  border-radius: 6px;
+  background: #f8fbff;
+  color: #42526a;
+  line-height: 1.7;
+}
+
+.case-node-confirm input {
+  margin-top: 6px;
+}
+
+.case-node-confirm b {
+  font-weight: 400;
+}
