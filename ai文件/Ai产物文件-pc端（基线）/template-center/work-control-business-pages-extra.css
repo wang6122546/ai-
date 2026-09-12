@@ -1,0 +1,6 @@
+.biz-chips button.current{box-shadow:0 0 0 2px rgba(45,109,246,.2)}
+.row-actions{display:flex;align-items:center;gap:5px}
+.row-actions button{padding:5px 8px;font-size:12px}
+.gas-record header .row-actions{margin-left:auto}
+.history-record.saved{margin-top:10px;border-left-color:#22a06b;background:#f3fbf7}
+[data-measure-risk][hidden]{display:none!important}

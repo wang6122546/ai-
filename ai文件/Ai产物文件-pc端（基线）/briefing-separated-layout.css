@@ -1,0 +1,12 @@
+.enhanced-briefing-page .briefing-step-row{grid-template-columns:58px 120px minmax(520px,1fr) 130px;min-width:880px}
+.enhanced-briefing-page .briefing-step-row textarea[aria-label="作业步骤"]{background:#fff}
+.briefing-risk-table{overflow-x:auto}
+.briefing-risk-row{display:grid;grid-template-columns:58px minmax(300px,.85fr) minmax(460px,1.15fr);min-width:820px;border-top:1px solid #e0e7f0;background:#fff}
+.briefing-risk-row.header{border-top:0;background:#b8cbf3;color:#263d5f;font-weight:700}
+.briefing-risk-row>*{margin:0;padding:12px;border:0;border-right:1px solid #e0e7f0;border-radius:0;font-family:inherit}
+.briefing-risk-row>*:last-child{border-right:0}
+.briefing-risk-row>span:first-child{display:grid;place-items:center;color:#65758c}
+.briefing-risk-row textarea{min-height:76px;line-height:1.55;resize:vertical;background:#fbfdff;color:#314159}
+.briefing-risk-row textarea[aria-label="主要安全风险"]{background:#f5f9ff;color:#285b9d}
+.briefing-risk-card-list{border-top:1px solid #e1e8f1}
+@media(max-width:900px){.enhanced-briefing-page .briefing-step-row{min-width:760px;grid-template-columns:52px 105px minmax(420px,1fr) 120px}}

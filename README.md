@@ -6,13 +6,13 @@
 
 本仓库的 Codex 生成内容统一收纳在 `ai文件/`，其中包含三套主要产物：
 
-- `ai文件/Ai产物文件-pc端`：PC 管理端交互原型
+- `ai文件/Ai产物文件-pc端（基线）`：PC 管理端交互原型
 - `ai文件/Ai产物文件-移动端`：移动端高保真交互原型（React + Vite）
 - `ai文件/Ai产物文件-prd文档`：安全作业管理 PRD HTML 文档及配套素材
 
 ## 本地查看
 
-- PC 端：进入 `ai文件/Ai产物文件-pc端` 后运行 `python3 -m http.server 4173`，访问 `http://localhost:4173/`。
+- PC 端：进入 `ai文件/Ai产物文件-pc端（基线）` 后运行 `python3 -m http.server 4173`，访问 `http://localhost:4173/`。
 - 移动端：进入 `ai文件/Ai产物文件-移动端`，运行 `npm ci`、`npm run dev`；提交前运行 `npm run build`。
 - PRD：进入 `ai文件/Ai产物文件-prd文档` 后运行 `python3 -m http.server 4174`，访问 `http://localhost:4174/安全作业管理_PRD.html`。
 

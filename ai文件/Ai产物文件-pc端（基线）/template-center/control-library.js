@@ -4,6 +4,8 @@ const defaultConfiguredControls=[
  {id:'measure',name:'安全措施确认',category:'作业安全',icon:'✓',description:'逐项确认安全措施是否落实，支持不涉及原因和确认签名。',fields:'安全措施清单、落实状态、不涉及原因、确认签名',required:true,status:'已启用',updated:'2026-09-08'},
  {id:'briefing',name:'安全交底',category:'交底确认',icon:'▤',description:'配置作业步骤、安全防范措施、周边危险禁入区域和交底签名。',fields:'作业步骤、安全防范措施、周边危险禁入区域、交底签名',required:true,status:'已启用',updated:'2026-09-08'},
  {id:'receive',name:'接收交底',category:'交底确认',icon:'✍',description:'展示前序交底内容，由作业人员进行接收确认并签字。',fields:'作业基本信息、风险管控内容、接收确认、接收签字',required:true,status:'已启用',updated:'2026-09-08'},
+ {id:'supervision',name:'监管确认',category:'现场监管',icon:'◈',description:'施工单位与业主单位依次确认，分别保存意见、时间和签字。',fields:'施工单位确认、业主单位确认、确认意见、确认签字',required:true,status:'已启用',updated:'2026-09-12'},
+ {id:'submit',name:'提交验收',category:'验收归档',icon:'◎',description:'记录实际作业时间、收尾事项、现场证据及双方收尾签字。',fields:'实际开始时间、实际完工时间、收尾事项、现场附件、双方签字',required:true,status:'已启用',updated:'2026-09-12'},
  {id:'finish',name:'结束确认',category:'验收归档',icon:'◎',description:'记录实际开始和完成时间、结束标准、现场证据及负责人签字。',fields:'实际开始时间、完成时间、结束标准、现场证据、负责人签字',required:true,status:'已启用',updated:'2026-09-08'},
  {id:'acceptance',name:'验收审批',category:'验收归档',icon:'◆',description:'配置验收资料、验收结果、验收意见和验收签名。',fields:'验收资料、验收结果、验收意见、验收签名',required:true,status:'已启用',updated:'2026-09-08'}
 ];

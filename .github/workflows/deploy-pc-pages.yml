@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "ai文件/Ai产物文件-pc端/**"
+      - "ai文件/Ai产物文件-pc端（基线）/**"
       - ".github/workflows/deploy-pc-pages.yml"
   workflow_dispatch:
 
@@ -34,7 +34,7 @@ jobs:
       - name: Prepare clean PC prototype
         run: |
           mkdir -p _site
-          rsync -a --delete --exclude='*_副本.*' "ai文件/Ai产物文件-pc端/" _site/
+          rsync -a --delete --exclude='*_副本.*' "ai文件/Ai产物文件-pc端（基线）/" _site/
 
       - name: Upload PC prototype
         uses: actions/upload-pages-artifact@v3

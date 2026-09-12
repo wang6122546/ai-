@@ -2,6 +2,16 @@
 const definitions=[
  ['risk','风险评估','作业安全','⚠'],['measure','安全措施确认','作业安全','✓'],['gas','气体检测','现场检测','◉'],['briefing','安全交底','交底确认','▤'],['receive','接收交底','交底确认','✍'],['supervision','监管确认','现场监管','⌾'],['submit','提交验收','验收归档','◎'],['acceptance','验收审批','验收归档','◆']
 ];
+const pageDetails={
+ risk:['配置风险点、关联措施、气体检测要求、附件及评估签字。','风险点、风险措施、补充说明、气体检测要求、附件、签字'],
+ measure:['按风险记录分组确认安全措施，支持批量处理、备注及签字。','风险点、措施清单、落实状态、确认备注、签字'],
+ gas:['记录作业前及作业中的多次气体检测，保留人工与设备数据来源。','检测要求、检测人员、检测项目、标准范围、检测值、结论'],
+ briefing:['维护作业步骤、安全防范措施和禁入区域告知，标准与新增内容分别留存。','作业步骤、安全防范措施、禁入区域告知、附件、确认、签字'],
+ receive:['只读接收交底内容，按接收人分别确认阅读并签字。','作业信息、步骤、风险措施、禁入区域、阅读确认、接收签字'],
+ supervision:['施工单位和业主单位顺序确认，分别保存结果、意见、时间及签字。','施工单位确认、业主单位确认、确认结果、意见、时间、签字'],
+ submit:['核对实际作业时间和收尾事项，保存现场证据及双方签字。','实际开始时间、实际完工时间、收尾事项、现场图片、视频、双方签字'],
+ acceptance:['只读查看收尾资料并新增本轮验收结论，历史记录不覆盖。','作业资料、实际时间、收尾事项、历次记录、验收结论、意见、签字']
+};
 const dataModels={
  risk:{mode:'读取基础数据 + 追加业务数据',source:'作业票基础信息、风险库',read:'作业信息、作业类型关联风险点',append:'支持新增风险点、追加风险措施',preview:'风险点来自风险库，可补充风险点；措施按风险点归集并允许新增。'},
  measure:{mode:'读取前序结果 + 状态确认',source:'风险评估输出',read:'风险点及其风险措施',append:'不新增原始风险；记录已落实/不涉及及原因',preview:'将风险评估产生的风险点与措施拼接展示，逐条判断“已落实”或“不涉及”。'},
@@ -12,7 +22,7 @@ const dataModels={
  submit:{mode:'读取实施结果 + 双方收尾',source:'现场实施、监管确认',read:'实施记录、问题及附件',append:'双方分别追加收尾确认',preview:'施工单位与业主单位完成收尾后提交验收。'},
  acceptance:{mode:'读取验收资料 + 审批结论',source:'提交验收',read:'双方收尾结果和验收资料',append:'追加验收意见、结论和签名',preview:'验收材料只读带入，审批人填写验收结论。'}
 };
-function upgrade(){const byId=new Map(configuredControls.map(x=>[x.id,x]));configuredControls=definitions.map(([id,name,category,icon],index)=>{const old=byId.get(id)||{},status=old.status==='已停用'?'草稿':old.status==='已启用'?'已发布':old.status||'已发布';return {...old,id,name,category,icon,description:old.description||`由基础控件拼装的${name}业务页面，供流程办理节点复用。`,fields:old.fields||'业务信息、办理结果、附件、签名',required:old.required!==false,status,version:old.version||'V1.0',updated:old.updated||'2026-09-11',references:old.references||(['risk','measure','briefing'].includes(id)?['常规作业流程 V1']:[]),history:old.history||[{version:'V1.0',status:'已发布',date:'2026-09-11'}],order:index}});saveConfiguredControls()}
+function upgrade(){const byId=new Map(configuredControls.map(x=>[x.id,x]));configuredControls=definitions.map(([id,name,category,icon],index)=>{const old=byId.get(id)||{},status=old.status==='已停用'?'草稿':old.status==='已启用'?'已发布':old.status||'已发布',detail=pageDetails[id];return {...old,id,name,category,icon,description:detail[0],fields:detail[1],required:old.required!==false,status,version:'当前配置',updated:'2026-09-12',references:['有限空间作业流程'],history:[{version:'当前配置',status:'已发布',date:'2026-09-12'}],order:index}});saveConfiguredControls()}
 upgrade();
 let libraryState='正常状态';
 function card(item){return `<article class="configured-control-card page-template-card"><div class="configured-control-icon">${escapeControlText(item.icon)}</div><div class="configured-control-main"><div class="configured-control-title"><h3>${escapeControlText(item.name)}</h3><span class="tag ${item.status==='已发布'?'published':'draft'}">${escapeControlText(item.status)}</span></div><p>${escapeControlText(item.description)}</p><div class="configured-control-meta"><span>${escapeControlText(item.category)}</span><span>基础控件拼装</span><button data-page-references="${item.id}">被 ${item.references.length} 个流程引用</button></div><small>页面字段：${escapeControlText(item.fields)}</small></div><div class="configured-control-actions"><button data-control-preview="${item.id}">预览</button><button data-control-edit="${item.id}">编辑</button>${item.status==='已发布'?'<button class="secondary" disabled>已发布</button>':`<button class="primary" data-page-publish="${item.id}">发布</button>`}</div></article>`}
