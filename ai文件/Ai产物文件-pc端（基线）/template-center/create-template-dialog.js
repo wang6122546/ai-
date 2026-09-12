@@ -1,6 +1,5 @@
 (function () {
   const fallbackHierarchy = [
-    { id: 'REGULAR', name: '常规作业', enabled: true, children: [{ id: 'REGULAR_WORK', name: '常规作业', enabled: true, levels: [] }] },
     { id: 'DANGER', name: '危险作业', enabled: true, children: ['有限空间作业', '高处作业', '吊装作业', '临时用电作业', '动火作业', '动土作业', '断路作业', '盲板抽堵作业', '爆破作业（井下）', '爆破作业（露天）'] },
     { id: 'CROSS', name: '交叉作业', enabled: true, children: ['交叉作业模板作业'] },
     { id: 'MAJOR', name: '危大工程', enabled: true, children: ['基坑作业', '脚手架作业', '模板作业', '拆除工程作业', '起重吊装及起重机械安装拆卸作业'] }
@@ -13,7 +12,7 @@
     let raw = [];
     try { raw = JSON.parse(localStorage.getItem('safeWorkTypeHierarchy') || '[]'); } catch (_) { raw = []; }
     if (!Array.isArray(raw) || !raw.length) raw = fallbackHierarchy;
-    return raw.filter(enabled).map((group, groupIndex) => ({ id: group.id || group.workCategoryId || `CATEGORY-${groupIndex}`, name: group.name, types: (group.children || []).map((entry, index) => typeof entry === 'string' ? { id: `${group.id || group.name}-${index}-${entry}`, name: entry, enabled: true, levels: knownLevels[entry] || [] } : { ...entry, id: typeId(entry, group, index), levels: entry.levels || entry.workLevels || knownLevels[entry.name] || [] }).filter(enabled) })).filter(group => group.name);
+    return raw.filter(enabled).filter(group => group.name !== '常规作业').map((group, groupIndex) => ({ id: group.id || group.workCategoryId || `CATEGORY-${groupIndex}`, name: group.name, types: (group.children || []).map((entry, index) => typeof entry === 'string' ? { id: `${group.id || group.name}-${index}-${entry}`, name: entry, enabled: true, levels: knownLevels[entry] || [] } : { ...entry, id: typeId(entry, group, index), levels: entry.levels || entry.workLevels || knownLevels[entry.name] || [] }).filter(enabled).filter(type => type.name !== '常规作业') })).filter(group => group.name && group.types.length);
   }
   function templateExists(type) {
     return templates.map(normalizeTemplateRecord).some(template => template.templateType === DEFAULT_TEMPLATE_TYPE && (template.workTypeId === type.id || template.workTypeId === type.name || template.name === type.name || template.name === `${type.name}模板`));

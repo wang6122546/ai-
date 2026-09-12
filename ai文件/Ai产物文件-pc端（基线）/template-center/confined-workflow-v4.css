@@ -1,0 +1,39 @@
+.yf-plane { width: 1940px; height: 720px; }
+.yf-plane > svg { width: 1940px; height: 720px; }
+.yf-plane > svg > path.edge { stroke: #4f86df; stroke-width: 1.75; marker-end: url(#arrow); vector-effect: non-scaling-stroke; }
+.yf-plane > svg > path.edge.selected { stroke: #1b5bd7; stroke-width: 3; filter: drop-shadow(0 0 2px rgba(45,109,246,.28)); }
+.yf-plane > svg > path.hit { stroke: transparent; stroke-width: 14; marker-end: none; cursor: pointer; }
+.yf-plane svg path.condition { stroke: #f59f24; marker-end: url(#arrow-condition); }
+.yf-plane svg path.reject { stroke: #e24b4b; marker-end: url(#arrow-reject); }
+.yf-plane svg text.edge-label { paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; fill: #436184; font-size: 11px; pointer-events: none; }
+.yf-plane svg text.condition { fill: #c87500; }
+.yf-plane svg text.reject { fill: #d92d20; font-weight: 600; }
+.yf-plane .yf-bend { fill: #fff; stroke: #2d6df6; stroke-width: 2; cursor: move; marker-end: none; }
+.yf-plane .yf-bend.active { fill: #2d6df6; }
+.yf-node.manual { border-color: #8db4f4; }
+.yf-node.condition { border-color: #f0ad43; background: #fff9ee; }
+.yf-node.system { border-color: #aab5c2; background: #eef1f5; }
+.yf-node.system header i { color: #69788a; }
+.yf-properties details { border-bottom: 1px solid #e3eaf3; }
+.yf-properties summary { padding: 12px 14px; background: #f8fafd; color: #2f435d; font-weight: 600; cursor: pointer; }
+.yf-permission-entry { width: 100%; padding: 9px; border: 1px solid #2d6df6; border-radius: 6px; background: #fff; color: #2d6df6; }
+.yf-library button:disabled { cursor: not-allowed; opacity: .48; background: #eef1f5; }
+.yf-plane marker path { fill: #4f86df; stroke: none; marker-end: none; }
+.yf-plane marker#arrow-condition path { fill: #f59f24; }
+.yf-plane marker#arrow-reject path { fill: #e24b4b; }
+.yf-node .port { top: auto; right: auto; left: auto; bottom: auto; width: 9px; height: 9px; border-width: 2px; z-index: 3; }
+.yf-node .port.side-t { top: -5px; left: calc(50% - 4px); }
+.yf-node .port.side-r { top: calc(50% - 4px); right: -5px; }
+.yf-node .port.side-b { bottom: -5px; left: calc(50% - 4px); }
+.yf-node .port.side-l { top: calc(50% - 4px); left: -5px; }
+.yf-node.merged-start { border-radius: 8px; }
+.yf-node.merged-start .yf-merged-apply { display:flex;align-items:center;justify-content:space-between;margin:0 8px 7px;padding:6px 8px;border:1px solid #cfe0fa;border-radius:5px;background:#edf5ff;color:#245fbd;font-size:10px; }
+.yf-node.merged-start .yf-merged-apply span { color:#6981a0; }
+.yf-guide { position: absolute; z-index: 1; pointer-events: none; background: #ef6c86; opacity: .8; }
+.yf-guide.v { top: 0; bottom: 0; width: 1px; }
+.yf-guide.h { left: 0; right: 0; height: 1px; }
+.yf-library header { display: flex; align-items: center; gap: 8px; }
+.yf-library header h3 { flex: none; margin: 0; white-space: nowrap; }
+.yf-library header input { min-width: 0; flex: 1; }
+.yf-canvas.dragging { box-shadow: inset 0 0 0 2px rgba(45,109,246,.16); }
+.yf-canvas-shell { margin-left: 0 !important; }

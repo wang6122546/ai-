@@ -32,7 +32,7 @@
     col('name', '姓名', { boundField: '人员ID', controlType: '人员选择器', displayValue: '姓名', saveValue: '人员ID', sourceObject: 'personArchive', dataRange: '在职人员', filter: '在职状态 = 在职', required: true, linkage: '部门、单位、资格证' }),
     col('department', '部门', { boundField: '部门ID', sourceType: '关联对象字段', controlType: '只读文本', displayValue: '部门名称', saveValue: '部门ID', sourceObject: 'personArchive', editable: false }),
     col('organization', '单位', { boundField: '单位ID', sourceType: '关联对象字段', controlType: '只读文本', displayValue: '单位名称', saveValue: '单位ID', sourceObject: 'personArchive', editable: false }),
-    col('certificateName', '资格证', { boundField: '资格证ID', sourceType: '关联对象字段', controlType: '关联数据选择器', displayValue: '证书名称', saveValue: '资格证ID', sourceObject: 'qualificationArchive', dataRange: '所选人员的证书', filter: '作业类型 = 当前作业类型 且 有效期 ≥ 当前日期', required: true, linkage: '证书名称、证书编号、有效期、证件附件' }),
+    col('certificateName', '资格证', { boundField: '资格证ID', sourceType: '关联对象字段', controlType: '关联数据选择器', displayValue: '证书名称', saveValue: '资格证ID', sourceObject: 'qualificationArchive', dataRange: '所选人员的证书', filter: '作业类型 = 当前作业类型 且 有效期 ≥ 当前日期', required: true, linkage: '证书编号、有效期、证件附件' }),
     col('certificateNo', '证书编号', { boundField: '证书编号', sourceType: '关联对象字段', controlType: '只读文本', displayValue: '证书编号', saveValue: '证书编号', sourceObject: 'qualificationArchive', editable: false }),
     col('certificateExpiry', '有效期', { boundField: '有效期', sourceType: '关联对象字段', controlType: '只读文本', displayValue: '有效期', saveValue: '有效期', sourceObject: 'qualificationArchive', editable: false }),
     col('certificateImage', '证件附件', { boundField: '证件附件', sourceType: '关联对象字段', controlType: '只读文本', displayValue: '附件名称', saveValue: '附件地址', sourceObject: 'qualificationArchive', editable: false }),
@@ -49,7 +49,7 @@
     item.dataBinding ||= { objectId: special ? 'specialWorkerDetail' : 'workPersonDetail', relationType: '一对多', relationField: '作业票ID → 作业票.作业票ID', loadMode: '读取已有数据', addMode: special ? '人员选择器新增' : '人员选择器新增', saveTarget: special ? 'specialWorkerDetail' : 'workPersonDetail', deleteRule: '标记删除关联明细' };
     item.linkages ||= special ? [
       { source: '姓名', targets: '部门、单位', mode: '自动带出，只读' },
-      { source: '资格证', targets: '证书名称、证书编号、有效期、证件附件', mode: '自动带出，只读' }
+      { source: '资格证', targets: '证书编号、有效期、证件附件', mode: '自动带出，只读' }
     ] : [{ source: '姓名', targets: '岗位、部门、单位', mode: '自动带出，只读' }];
     item.snapshot ||= { enabled: true, description: special ? '人员、部门、单位、证书及证件附件' : '人员、岗位、部门和单位' };
     item.dataState ||= 'normal';

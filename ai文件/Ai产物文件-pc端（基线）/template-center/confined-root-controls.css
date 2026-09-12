@@ -1,0 +1,1 @@
+.confined-root-control{position:relative;grid-template-columns:150px minmax(0,1fr);margin:0;background:#fff;border-style:solid}.confined-root-control>.confined-actions{display:none;position:absolute;right:5px;top:-13px;z-index:9}.confined-root-control:hover>.confined-actions,.confined-root-control.selected>.confined-actions{display:flex}
