@@ -1,0 +1,22 @@
+/* GIS 可读层：尺寸由 visual.js 按当前 viewBox 换算为屏幕像素。 */
+.district-shape text,#areaLayer .area-label,#areaLayer .facility-caption{display:none}
+#gisLabelLayer{pointer-events:none}
+#gisLabelLayer text{font-family:"Source Han Sans SC","HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:.65px;paint-order:stroke;stroke:#082541;stroke-width:1.4;filter:none}
+#gisDistrictLabels text{fill:#b7dce8;font-weight:600;text-anchor:middle;dominant-baseline:middle}
+#gisAreaLabels text{fill:#a4d2dd;font-weight:500;text-anchor:middle;dominant-baseline:middle}
+#gisAreaLabels .restricted-caption{fill:#e8b9ae}
+.gis-point circle.gis-core,.gis-cluster circle.gis-core{vector-effect:none;filter:none}
+.gis-point .point-halo{vector-effect:none;stroke:none;transform-box:fill-box;transform-origin:center;animation:gisQuietBreath 3.2s ease-in-out infinite;opacity:.12}
+.gis-point.risk-red .point-halo{animation:gisAlertPulse 1.65s ease-out infinite;opacity:.3}
+.gis-point.risk-orange .point-halo{animation:gisAlertPulse 2s ease-out infinite;opacity:.23}
+.gis-point.risk-yellow .point-halo{animation:gisQuietBreath 3s ease-in-out infinite;opacity:.14}
+.gis-point.risk-green .point-halo,.gis-point.risk-gray .point-halo,.gis-point.is-focused .point-halo{animation:none;opacity:0}
+.gis-point.is-focused circle.gis-core{stroke:#fff;filter:none}
+.gis-point circle.gis-hit,.gis-cluster circle.gis-hit{fill:transparent;stroke:none;filter:none;vector-effect:none;pointer-events:all}
+.gis-point text,.gis-point:hover text{display:none;font-family:"Source Han Sans SC","HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",sans-serif;font-weight:500;letter-spacing:.5px;fill:#c7e5eb;stroke:#082541;paint-order:stroke;pointer-events:none}
+.map-stage[data-gis-level="city"] .gis-point.site text,.map-stage[data-gis-level="district"] .gis-point.site text,.map-stage[data-gis-level="factory"] .gis-point.site text,.map-stage[data-gis-level="area"] .gis-point.site text,.gis-point.job:hover text,.gis-point.job.is-focused text,.map-stage[data-gis-level="area"] .gis-point.job text{display:block}
+.gis-cluster circle.gis-core{filter:none;stroke:#8cdbeb}
+.gis-cluster .cluster-label{transform:none;stroke:#082541;stroke-width:1.5;letter-spacing:.5px}
+@keyframes gisQuietBreath{0%,100%{opacity:.07;transform:scale(.92)}50%{opacity:.16;transform:scale(1.04)}}
+@keyframes gisAlertPulse{0%{opacity:.27;transform:scale(.85)}60%{opacity:.08;transform:scale(1.09)}100%{opacity:0;transform:scale(1.1)}}
+@media (prefers-reduced-motion:reduce){.gis-point .point-halo{animation:none!important}}
