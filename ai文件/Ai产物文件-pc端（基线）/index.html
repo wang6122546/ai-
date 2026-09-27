@@ -28,12 +28,13 @@
   <link rel="stylesheet" href="job-ticket-templates.css?v=20260910-1" />
   <link rel="stylesheet" href="gas-analysis-compact.css?v=20260910-1" />
   <link rel="stylesheet" href="acceptance-tail.css?v=20260910-1" />
+  <link rel="stylesheet" href="safety-analysis.css?v=20260924-5" />
 </head>
 <body>
   <aside class="sidebar">
     <div class="brand"><span class="brand-mark">安</span><span><b>安全作业管理</b></span></div>
     <nav>
-      <a href="#" data-view="overview"><span>⌂</span>安全作业一张图</a>
+      <a href="safety-map.html" target="_blank" rel="noopener" data-external-view="safety-map"><span>⌂</span>安全作业一张图</a>
       <a href="#" data-view="todo"><span>✓</span>我的待办<i>12</i></a>
       <a href="#" data-view="plans"><span>▥</span>作业计划</a>
       <a href="#" data-view="onecase"><span>▧</span>一件一案</a>
@@ -94,7 +95,9 @@
 
   <div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="eyebrow">作业详情</span><h2 id="modalTitle">作业信息</h2><div id="modalBody"></div><div class="modal-actions"><button class="ghost" id="cancelModal">关闭</button><button class="primary">查看审批单</button></div></div></div>
   <div class="toast" id="toast">原型提示：新建作业流程将在下一页面接入</div>
-  <script src="app.js?v=20260913-2"></script>
+  <script src="safety-work-records.js?v=20260924-3"></script>
+  <script src="safety-analysis.js?v=20260924-6"></script>
+  <script src="app.js?v=20260924-1"></script>
   <script src="regular.js?v=20260901-1"></script>
   <script src="approval-engine.js?v=20260829"></script>
   <script src="job-wizard.js?v=20260901-2"></script>
@@ -122,5 +125,12 @@
   <script src="briefing-separated-layout.js?v=20260913-2"></script>
   <link rel="stylesheet" href="briefing-step-dialog.css?v=20260913-2" />
   <script src="briefing-step-dialog.js?v=20260913-1"></script>
+  <link rel="stylesheet" href="list-scheme-inheritance.css?v=20260914-1" />
+  <script src="list-scheme-inheritance.js?v=20260924-2"></script>
+  <link rel="stylesheet" href="list-scheme-v2.css?v=20260924-6" />
+  <script src="list-scheme-v2.js?v=20260924-5"></script>
+  <script src="list-scheme-live.js?v=20260924-4"></script>
+  <link rel="stylesheet" href="ui-consistency.css?v=20260914-1" />
+  <script src="ui-consistency.js?v=20260914-1"></script>
 </body>
 </html>

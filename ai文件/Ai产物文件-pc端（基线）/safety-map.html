@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>安全作业一张图</title>
+  <link rel="stylesheet" href="safety-map.css?v=20260924-1">
+  <link rel="stylesheet" href="safety-map-gis.css?v=20260924-1">
+  <link rel="stylesheet" href="safety-map-point-card.css?v=20260924-6">
+<link rel="stylesheet" href="safety-map-business.css?v=20260924-3">
+  <style>.district-shape,.district-shape:focus,.city-map:focus{outline:none}</style>
+  <style>.district-shape text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:9px;font-weight:500;letter-spacing:.2px;fill:#3fd9c3;stroke:#05264a;stroke-width:2px;paint-order:stroke;filter:drop-shadow(0 0 2px #18b9ce88)}.district-shape.hover text{fill:#7effe7;font-size:10px;font-weight:600}</style>
+  <link rel="stylesheet" href="safety-map-visual.css?v=20260925-1">
+</head>
+<body>
+  <div class="screen-shell">
+    <header class="screen-header">
+      <div class="clock"><b id="clock">2026-09-24 14:43:03</b><span id="weekday">星期四</span></div>
+      <div class="title-wing left"></div>
+      <h1>安全作业一张图<small>SAFE WORK OPERATION MAP</small></h1>
+      <div class="title-wing right"></div>
+      <div class="header-actions"><span>数据更新 14:42</span><button id="fullscreenBtn">全屏</button></div>
+    </header>
+
+    <main class="dashboard">
+      <aside class="side-column left-column">
+        <section class="data-panel"><header><h2>今日安全作业</h2><em>26 项</em></header><div class="today-stats"><button data-gis-metric="all"><b>26</b><span>作业总数</span></button><button data-gis-metric="working"><b>8</b><span>作业中</span></button><button data-gis-metric="high"><b>9</b><span>高风险作业</span></button><button data-gis-metric="unready"><b>5</b><span>开工条件未满足</span></button></div></section>
+        <section class="data-panel"><header><h2>当前流程待办</h2><em>12 项</em></header><div class="flow-todos"><button data-work-list="待审批"><b>7</b><span>待审批</span></button><button data-work-list="待监管确认"><b>3</b><span>待监管确认</span></button><button data-work-list="待验收"><b>2</b><span>待验收</span></button></div></section>
+        <section class="data-panel chart-panel"><header><h2>作业类型分布</h2><em>26项</em></header><div class="bars"><i style="--h:78%"><button data-work-list="动火作业">8</button><span>动火</span></i><i style="--h:63%"><button data-work-list="高处作业">6</button><span>高处</span></i><i style="--h:52%"><button data-work-list="有限空间作业">5</button><span>有限空间</span></i><i style="--h:40%"><button data-work-list="吊装作业">4</button><span>吊装</span></i><i style="--h:31%"><button data-work-list="临时用电作业">3</button><span>临时用电</span></i></div></section>
+        <section class="data-panel"><header><h2>作业状态</h2></header><div class="status-ring"><button class="ring" data-work-list="全部作业"><b>26</b><span>作业总数</span></button><ul><li><i class="blue"></i>申请中 <button data-work-list="申请中">9</button></li><li><i class="yellow"></i>作业中 <button data-work-list="作业中">7</button></li><li><i class="red"></i>已暂停 <button data-work-list="已暂停">1</button></li><li><i class="green"></i>已完成 <button data-work-list="已完成">9</button></li></ul></div></section>
+      </aside>
+
+      <section class="map-stage" aria-label="鞍山市安全作业地图">
+        <div class="map-toolbar"><label><span>⌕</span><input id="mapSearch" placeholder="搜索名称、编号、单位、区域"></label><select id="typeFilter"><option value="all">全部类型</option><option>动火作业</option><option>高处作业</option><option>有限空间作业</option><option>吊装作业</option><option>临时用电作业</option></select><select id="statusFilter"><option value="all">全部状态</option><option>作业中</option><option>申请中</option><option>已暂停</option><option>已完成</option></select><select id="riskFilter"><option value="all">全部风险</option><option>红色风险</option><option>橙色风险</option><option>黄色风险</option><option>蓝色风险</option><option>绿色风险</option><option>灰色状态</option></select><select id="unitFilter"><option value="all">全部生产单位</option><option>齐大山选矿厂</option><option>东鞍山铁矿</option><option>眼前山铁矿</option><option>海城市作业区</option></select><button class="layer-toggle" id="layerToggle">图层 ▴</button></div>
+        <div class="layer-panel" id="layerPanel"><label><input type="checkbox" data-layer="job" checked> 作业点位</label><label><input type="checkbox" data-layer="site" checked> 生产单位和作业区域</label><label><input type="checkbox" data-layer="monitor" checked> 视频监控设备</label><label><input type="checkbox" data-layer="sensor" checked> 智能监测设备</label><label><input type="checkbox" data-layer="hazard" checked> 关联隐患</label><label><input type="checkbox" data-layer="zone" checked> 禁入及警戒区域</label><label><input type="checkbox" data-layer="heat"> 高风险热力分布</label></div>
+        <div class="map-grid"></div><div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div>
+        <button class="map-back" id="mapBack" hidden>← 返回鞍山市</button>
+        <div class="map-level map-breadcrumb" id="mapLevel"><button data-level="city">鞍山市</button><span>市级视图</span></div>
+        <svg class="city-map" id="cityMap" viewBox="0 0 1000 700" role="img" aria-label="鞍山市真实行政区域地图">
+          <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="cityFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0c5799" stop-opacity=".66"/><stop offset="1" stop-color="#092b60" stop-opacity=".88"/></linearGradient></defs>
+          <g id="districtLayer"></g><g id="spatialRiskLayer"></g><g id="areaLayer"></g><g id="pointLayer"></g>
+        </svg>
+        <div class="map-loading" id="mapLoading">正在加载鞍山市 GIS 边界…</div>
+        <div class="spatial-warning" id="spatialWarning"><b>空间风险提示</b><span>选矿车间半径100米内存在动火与临时用电同时作业，请确认交叉作业管控措施。</span><button id="locateConflict">定位</button></div>
+        <button class="unlocated-jobs" id="unlocatedJobs">未定位作业 <b>2</b></button>
+        <article class="map-point-card" id="mapPointCard" hidden><button class="point-card-close" id="pointCardClose" aria-label="关闭">×</button><span id="pointCardKind">作业点位</span><h3 id="pointCardTitle">作业名称</h3><p id="pointCardMeta"></p><dl id="pointCardFacts"></dl><footer><em id="pointCardStatus"></em><button id="pointCardMonitor">实时监控</button><button id="pointCardDetail">作业全景</button></footer></article>
+        <div class="map-legend"><span><i class="risk-red"></i>立即处理</span><span><i class="risk-orange"></i>重点监管</span><span><i class="risk-yellow"></i>提醒待办</span><span><i class="risk-blue"></i>正常作业</span><span><i class="risk-green"></i>完成闭环</span><span><i class="risk-gray"></i>未开始/作废</span></div>
+        <div class="map-scale">20 km <i></i></div><div class="map-tip">滚轮缩放 · 拖动平移 · 双击区县下钻</div>
+      </section>
+
+      <aside class="side-column right-column"><section class="data-panel"><header><h2>作业关联风险</h2><em>9 项待处理</em></header><div class="risk-metric-grid"><button data-risk-metric="gas"><b>4</b><span>气体检测异常</span></button><button data-risk-metric="video"><b>4</b><span>视频设备离线</span></button><button data-risk-metric="hazard"><b>7</b><span>未关闭隐患</span></button><button data-risk-metric="briefing"><b>3</b><span>交底未全员完成</span></button><button data-risk-metric="timeout"><b>2</b><span>即将超时</span></button><button data-risk-metric="paused"><b>1</b><span>已暂停作业</span></button></div></section><section class="data-panel site-alerts"><header><h2>最近现场预警</h2><em>3 条</em></header><article><i class="red"></i><div><b>有限空间氧含量短时越限</b><span>眼前山铁矿 · 已复核</span></div><em>已处理</em></article><article><i class="orange"></i><div><b>高风险作业视频覆盖中断</b><span>齐大山选矿厂 · 5分钟</span></div><em>处理中</em></article><article><i class="yellow"></i><div><b>作业审批即将超时</b><span>东鞍山铁矿 · 12分钟</span></div><em>待处理</em></article></section><section class="data-panel unit-rank"><header><h2>生产单位作业分布</h2><em>24 项已定位</em></header><div id="unitRank"></div></section></aside>
+    </main>
+  </div>
+
+  <aside class="detail-drawer" id="detailDrawer" aria-hidden="true"><header><div><h2>作业详情</h2><span id="detailRisk">绿色风险</span></div><button id="closeDetail" aria-label="关闭">×</button></header><nav><button class="active" data-tab="job">作业详情</button><button data-tab="monitor">监控数据</button><button data-tab="hazard">隐患数据</button></nav><div id="detailContent"></div></aside>
+  <aside class="work-list-drawer" id="workListDrawer" aria-hidden="true"><header><div><h2 id="workListTitle">作业列表</h2><span id="workListCount">0 项</span></div><button id="closeWorkList" aria-label="关闭">×</button></header><div class="work-list-filter"><input id="workListSearch" placeholder="搜索作业名称、编号、负责人"></div><div class="work-list-content" id="workListContent"></div></aside>
+  <script src="safety-work-records.js?v=20260924-3"></script>
+  <script src="safety-map.js?v=20260924-14"></script>
+  <script src="safety-map-point-card.js?v=20260924-4"></script>
+  <script src="safety-map-district-drill.js?v=20260924-2"></script>
+  <script src="safety-map-business.js?v=20260924-5"></script>
+  <script src="safety-map-visual.js?v=20260925-1"></script>
+</body>
+</html>

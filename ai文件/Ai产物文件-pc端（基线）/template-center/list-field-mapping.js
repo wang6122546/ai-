@@ -1,0 +1,13 @@
+/* 作业模板仅维护类别公共列表所需字段的轻量映射。 */
+(function(){
+  if(typeof renderResourceStep!=='function')return;
+  const mappings=[
+    ['作业票编号','作业票编号','permit_no'],['作业类型','作业类型','work_type'],['作业等级','作业等级','work_level'],
+    ['作业内容','', 'work_content'],['作业负责人','作业负责人','owner_id'],['计划开始时间','计划开始时间','plan_start'],
+    ['计划结束时间','计划结束时间','plan_end'],['作业所在单位','作业所在单位','site_unit_id']
+  ];
+  const originalRender=renderResourceStep;
+  function addEntry(){const nav=document.querySelector('.simplified-nav,.draft-config-nav,.build-nav');if(nav&&!nav.querySelector('[data-list-field-mapping]'))nav.insertAdjacentHTML('beforeend','<button data-list-field-mapping><span>列表字段映射</span><i>›</i></button>');document.querySelector('[data-list-field-mapping]')?.addEventListener('click',()=>renderResourceStep('listmap'))}
+  function mappingPage(){const nav=document.querySelector('.simplified-nav,.draft-config-nav,.build-nav');nav?.querySelectorAll('button').forEach(x=>x.classList.remove('active'));nav?.querySelector('[data-list-field-mapping]')?.classList.add('active');const main=nav?.parentElement.querySelector('main');if(!main)return;main.innerHTML=`<section class="list-mapping-card"><h2>列表字段映射</h2><p class="list-mapping-note">所属作业类别统一维护完整列表方案；当前模板仅映射公共列表所需的申报字段，不重复设置列表、搜索和操作。</p><div class="table-wrap"><table><thead><tr><th>类别公共列表字段</th><th>模板申报字段</th><th>字段编码</th><th>映射状态</th><th>操作</th></tr></thead><tbody>${mappings.map((row,i)=>`<tr data-map-index="${i}"><td><b>${row[0]}</b></td><td>${row[1]||'未映射'}</td><td><code>${row[2]}</code></td><td><span class="mapping-badge ${row[1]?'':'missing'}">${row[1]?'已映射':'缺失'}</span></td><td><button class="secondary" data-map-field>${row[1]?'更换':'选择字段'}</button></td></tr>`).join('')}</tbody></table></div><div id="mappingValidation"></div><div class="mapping-footer"><button class="secondary" id="validateMapping">发布前校验</button><button class="primary" id="saveMapping">保存映射</button></div></section>`;main.querySelectorAll('[data-map-field]').forEach(button=>button.onclick=()=>{const row=button.closest('tr'),item=mappings[+row.dataset.mapIndex];item[1]=item[0];mappingPage();toast(`已映射：${item[0]}`)});main.querySelector('#validateMapping').onclick=()=>{const missing=mappings.filter(x=>!x[1]),box=main.querySelector('#mappingValidation');box.className=`mapping-validation ${missing.length?'':'ok'}`;box.textContent=missing.length?`发布校验未通过：公共列表字段“${missing.map(x=>x[0]).join('、')}”尚未映射。`:'发布校验通过：类别公共列表所需字段均已映射。'};main.querySelector('#saveMapping').onclick=()=>toast('列表字段映射已保存到当前模板草稿')}
+  renderResourceStep=function(view='basic'){originalRender(view==='listmap'?'permission':view);addEntry();if(view==='listmap')mappingPage()};
+})();
